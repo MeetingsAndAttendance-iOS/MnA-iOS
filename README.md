@@ -4,7 +4,7 @@ This is a course requirement for CS191/192 Software Engineering of the Departmen
 
 MeetingsAndAttendace - iOS
 
-ayOS apps
+ayOS apps - 
 Justin Balderas
 Angelica Dino
 Patrick Dominguiano
