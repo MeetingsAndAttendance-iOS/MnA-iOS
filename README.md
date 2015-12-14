@@ -8,3 +8,5 @@ ayOS apps -
 Justin Balderas
 Angelica Dino
 Patrick Dominguiano
+
+To know more abou the application, visit this link: https://youtu.be/8GnV_irFxsg
