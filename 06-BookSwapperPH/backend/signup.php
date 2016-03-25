@@ -12,8 +12,8 @@
 		{
 			$hash = password_hash($pass1, PASSWORD_DEFAULT);
 			
-				$data = array('name' => $name, 'password' => $hash);
-				$STH = $DBH->prepare("INSERT INTO users (userName, email, password, displayName) VALUES (:name, :email :password, :name)");
+				$data = array('name' => $name, 'password' => $hash, 'email' => $email);
+				$STH = $DBH->prepare("INSERT INTO users (userName, email, password, displayName) VALUES (:name, :email, :password, :name)");
 	
 			$STH->execute($data);
 

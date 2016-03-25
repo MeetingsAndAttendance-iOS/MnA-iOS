@@ -3,7 +3,7 @@
 
     try
     {
-        $DBH = new PDO("mysql:host=localhost;dbname=165", "root", "");
+        $DBH = new PDO("mysql:host=localhost;dbname=bookswapperph", "root", "");
 
         $name = $_POST['username'];
         $pass = $_POST['password'];

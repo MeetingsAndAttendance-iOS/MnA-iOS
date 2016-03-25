@@ -1,10 +1,16 @@
 <?php
 	session_start();
+	include 'backend/searchUsers.php';
+	include 'backend/searchProducts.php';
 	include 'backend/getUser.php';
+	if(isset($_POST['search']))
+	{
+		$_SESSION['search'] = $_POST['search'];
+	}
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
+<html>
+
 
 <head>
 
@@ -13,22 +19,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="This is a book trading website.">
     <meta name="author" content="Justin Balderas, Ma. Angelica Dino, Patrick Joy Dominguiano">
-
+	
     <title>BookSwapperPH</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
 
-    <!-- Custom Fonts -->
-    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
-
-    <!-- Plugin CSS -->
-    <link rel="stylesheet" href="css/animate.min.css" type="text/css">
-
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/creative.css" type="text/css">
-    <link rel="stylesheet" href="css/styles.css" type="text/css">
 
+    <link rel="stylesheet" href="css/styles.css" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -36,68 +36,68 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
     <style>
-        #popup {
-            width:100%;
-            height:100%;
-            opacity:.95;
-            top:0;
-            left:0;
-            display:none;
-            position:fixed;
-            background-color:#313131;
-						-webkit-animation: fadein 0.5s; /* Safari, Chrome and Opera > 12.1 */
-			       -moz-animation: fadein 0.5s; /* Firefox < 16 */
-			        -ms-animation: fadein 0.5s; /* Internet Explorer */
-			         -o-animation: fadein 0.5s; /* Opera < 12.1 */
-			            animation: fadein 0.5s;
-        }
+		#popup {
+				width:100%;
+				height:100%;
+				opacity:.95;
+				top:0;
+				left:0;
+				display:none;
+				position:fixed;
+				background-color:#313131;
+				-webkit-animation: fadein 0.5s; /* Safari, Chrome and Opera > 12.1 */
+				 -moz-animation: fadein 0.5s; /* Firefox < 16 */
+					-ms-animation: fadein 0.5s; /* Internet Explorer */
+					 -o-animation: fadein 0.5s; /* Opera < 12.1 */
+							animation: fadein 0.5s;
+		}
 
-        #popup1 {
-            width:100%;
-            height:100%;
-            opacity:.95;
-            top:0;
-            left:0;
-            display:none;
-            position:fixed;
-            background-color:#313131;
-						-webkit-animation: fadein 0.5s; /* Safari, Chrome and Opera > 12.1 */
-			       -moz-animation: fadein 0.5s; /* Firefox < 16 */
-			        -ms-animation: fadein 0.5s; /* Internet Explorer */
-			         -o-animation: fadein 0.5s; /* Opera < 12.1 */
-			            animation: fadein 0.5s;
-        }
+		#popup1 {
+				width:100%;
+				height:100%;
+				opacity:.95;
+				top:0;
+				left:0;
+				display:none;
+				position:fixed;
+				background-color:#313131;
+				-webkit-animation: fadein 0.5s; /* Safari, Chrome and Opera > 12.1 */
+				 -moz-animation: fadein 0.5s; /* Firefox < 16 */
+					-ms-animation: fadein 0.5s; /* Internet Explorer */
+					 -o-animation: fadein 0.5s; /* Opera < 12.1 */
+							animation: fadein 0.5s;
+		}
 
-				@keyframes fadein {
-						from { opacity: 0; }
-						to   { opacity: .95; }
-				}
+		@keyframes fadein {
+				from { opacity: 0; }
+				to   { opacity: .95; }
+		}
 
-				/* Firefox < 16 */
-				@-moz-keyframes fadein {
-						from { opacity: 0; }
-						to   { opacity: .95; }
-				}
+		/* Firefox < 16 */
+		@-moz-keyframes fadein {
+				from { opacity: 0; }
+				to   { opacity: .95; }
+		}
 
-				/* Safari, Chrome and Opera > 12.1 */
-				@-webkit-keyframes fadein {
-						from { opacity: 0; }
-						to   { opacity: .95; }
-				}
+		/* Safari, Chrome and Opera > 12.1 */
+		@-webkit-keyframes fadein {
+				from { opacity: 0; }
+				to   { opacity: .95; }
+		}
 
-				/* Internet Explorer */
-				@-ms-keyframes fadein {
-						from { opacity: 0; }
-						to   { opacity: .95; }
-				}
+		/* Internet Explorer */
+		@-ms-keyframes fadein {
+				from { opacity: 0; }
+				to   { opacity: .95; }
+		}
 
-				/* Opera < 12.1 */
-				@-o-keyframes fadein {
-						from { opacity: 0; }
-						to   { opacity: .95; }
-				}
+		/* Opera < 12.1 */
+		@-o-keyframes fadein {
+				from { opacity: 0; }
+				to   { opacity: .95; }
+		}
+
 
         #popupForm {
             background-color:#fff;
@@ -121,8 +121,7 @@
 </head>
 
 <body class="full">
-
-    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -132,7 +131,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll">BookSwapperPH</a>
+                <a class="navbar-brand page-scroll" href="index.php">BookSwapperPH</a>
 
 				<!-- SearchBar and Submit Button -->
 				<form class="navbar-form navbar-left" action="tempSearch.php" method="post" role="search">
@@ -153,10 +152,11 @@
 						{
 							$user = getUser();
 							?>
+						
+									<!-- If the form libraryForm is located here, there would be a newline after Library link in the navbar !-->
+									<li><a href="javascript: submitLibraryForm()">Library</a></li>
+								<?php
 							
-							<li><a href="javascript: submitLibraryForm()">Library</a></li>
-							<?php
-								
 								if($_SESSION['isAdmin'] == 1)
 								{
 									?>
@@ -189,18 +189,58 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
+<div class="container text-center">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<div class="boxview">
+				<h1>Users</h1>
+				<div class="table-responsive">
+				  <table class="table">
+			      <thead>
+			          <tr>
+			          <th>Name</th>
+			          <th>Contact No</th>
+			          <th>Email</th>
+			          </tr>
+			      </thead>
+			      <tbody>
+			          <?php
+			              echo drawUsers();
+			          ?>
+			      </tbody>
+			      </table>
+				</div>
 
-    <header>
-        <div class="header-content">
-            <div>
-                <h1>BookSwapperPH</h1>
-                <hr>
-                <h3>Empowering Filipinos to read books!</h3>
-            </div>
-        </div>
-    </header>
+				<h1>Products</h1>
+				<div class="table-responsive">
+				  <table class="table">
+			      <thead>
+			          <tr>
+			          <th>Product Name</th>
+			          <th>Type</th>
+			          <th>Price</th>
+			          <th>Unit</th>
+			          <th>Supplier</th>
+			          </tr>
+			      </thead>
+			      <tbody>
+			          <?php
+			              echo drawProducts();
+			          ?>
+			      </tbody>
+			      </table>
+				</div>
 
-    <div class="container">
+				<div style="float: left; text-align:left; margin-top:10px">
+					<form action="index.php" method="post">
+						<button class="btn btn-large btn-primary" type="submit">Back</button>
+					</form>
+				</div>
+			</div>
+
+</div>
+
+<div class="container">
         <div id="popup">
             <div class="row" id="popupForm">
                 <button id="exit" class="btn btn-primary" style="padding-right:20px;" onclick="div_hide()">X</button>
@@ -241,7 +281,7 @@
                     <input type="password" name="password2" class="form-control" style="margin: 5px" placeholder="Confirm Password" required >
 					<input type="text" name="location" class="form-control" style="margin: 5px" placeholder="Location/Address" required >
 					<input type="number" size="11" name="contactno" class="form-control" style="margin: 5px" placeholder="Contect Number" required >
-					
+
                     <div class="row">
                         <div class="col-md-3">
                             <a class="btn btn-large btn-primary" href="index.php">Back</a>
@@ -257,28 +297,7 @@
         </div>
     </div>
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="js/jquery.easing.min.js"></script>
-    <script src="js/jquery.fittext.js"></script>
-    <script src="js/wow.min.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="js/creative.js"></script>
-
-		<!-- Script for enabling links to submit form !-->
-		<script type="text/javascript">
-		function submitLibraryForm(){
-			  document.libraryForm.submit();
-		}
-		</script>
-
-    <script type="text/javascript">
+	<script type="text/javascript">
     function div_show()
     {
         document.getElementById('popup').style.display = "block";
@@ -301,7 +320,5 @@
         document.getElementById('popup1').style.display = "none";
     }
     </script>
-
 </body>
-
 </html>
