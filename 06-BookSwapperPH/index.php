@@ -11,8 +11,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="This is a wholesaler website.">
-    <meta name="author" content="Dominic Truelen, Justin Balderas, Patricia Regarde, Patrick Dominguiano, Cyan Villarin">
+    <meta name="description" content="This is a book trading website.">
+    <meta name="author" content="Justin Balderas, Ma. Angelica Dino, Patrick Joy Dominguiano">
 
     <title>BookSwapperPH</title>
 
