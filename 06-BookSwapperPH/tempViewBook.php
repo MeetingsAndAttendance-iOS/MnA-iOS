@@ -1,41 +1,36 @@
 <?php
 	session_start();
-	include 'backend/searchUsers.php';
-	include 'backend/searchBooks.php';
 	include 'backend/getUser.php';
-	if(isset($_POST['search']))
+	include 'backend/getBook.php';
+
+	if(isset($_POST['bookID']))
 	{
-		$_SESSION['search'] = $_POST['search'];
+		$_SESSION['bookID'] = $_POST['bookID'];
 	}
 ?>
 
-<html>
-
-
+<html lang="en">
 <head>
-
-    <meta charset="utf-8">
+	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="This is a book trading website.">
     <meta name="author" content="Justin Balderas, Ma. Angelica Dino, Patrick Joy Dominguiano">
-	
+
     <title>BookSwapperPH</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
 
+    <!-- Custom Fonts -->
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
+
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="css/animate.min.css" type="text/css">
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/creative.css" type="text/css">
-
     <link rel="stylesheet" href="css/styles.css" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
     <style>
 		#popup {
 				width:100%;
@@ -121,7 +116,7 @@
 </head>
 
 <body class="full">
-<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+	<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -137,7 +132,7 @@
 				<form class="navbar-form navbar-left" action="tempSearch.php" method="post" role="search">
 					<div class="form-group">
 						<input type="search" style="width:150px" name="search" class="form-control" placeholder="Search">
-						<button type="submit" value="Search" class="btn btn-default">Search</button>
+						<button type="submit" value="Search" class="btn btn-default">Submit</button>
 					</div>
 				</form>
             </div>
@@ -152,11 +147,8 @@
 						{
 							$user = getUser();
 							?>
-						
-									<!-- If the form libraryForm is located here, there would be a newline after Library link in the navbar !-->
-									<li><a href="javascript: submitLibraryForm()">Library</a></li>
-								<?php
-							
+							<li><a href="javascript: submitLibraryForm()">Library</a></li>
+							<?php
 								if($_SESSION['isAdmin'] == 1)
 								{
 									?>
@@ -189,57 +181,87 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
-<div class="container text-center">
-	<div class="row">
-		<div class="col-md-10 col-md-offset-1">
+
+	<?php
+		$book = getBook();
+	?>
+		<div class="container text-center">
+		<div class="col-md-6 col-md-offset-3">
 			<div class="boxview">
-				<h1>Users</h1>
-				<div class="table-responsive">
-				  <table class="table">
-			      <thead>
-			          <tr>
-			          <th>Name</th>
-			          <th>Contact No</th>
-			          <th>Email</th>
-			          </tr>
-			      </thead>
-			      <tbody>
-			          <?php
-			              echo drawUsers();
-			          ?>
-			      </tbody>
-			      </table>
+			    <h1><?php echo $book->bookName; ?></h1>
+
+	            <div class="panel panel-primary">
+	              <div class="panel-heading">
+	                <h3 class="panel-title">Book Name</h3>
+	              </div>
+
+	              <div class="panel-body">
+	                <?php echo $book->bookName; ?>
+	              </div>
+	            </div>
+
+	            <div class="panel panel-primary">
+	              <div class="panel-heading">
+	                <h3 class="panel-title">Description</h3>
+	              </div>
+
+	              <div class="panel-body">
+	                <?php echo $book->bookDescription; ?>
+	              </div>
+	            </div>
+
+	            <div class="panel panel-primary">
+	              <div class="panel-heading">
+	                <h3 class="panel-title">Trading For</h3>
+	              </div>
+	              <div class="panel-body">
+	                <?php echo $book->bookWant; ?>
+	              </div>
+	            </div>
+
+		        <div class="row">
+		        	<div class="col-md-4">
+		        		<a class="btn btn-warning" href="tempLibrary.php">Back</a>
+		        	</div>
+
+
+			    <?php
+				    if(isset($_SESSION['isLoggedIn']) AND $_SESSION['id'] == $_SESSION['tempID'])
+					{
+						?>
+					    <div class="col-md-4">
+					    	<form action="tempEditProduct.php" method="post">
+					            <input type="submit" class="btn btn-warning" value="Edit">
+					        </form>
+					    </div>
+
+
+					    <div class="col-md-4">
+					    	<form action="backend/deleteBook.php" method="post">
+					            <input type="submit" class="btn btn-danger" value="Delete">
+					        </form>
+					    </div>
+
+				    	<?php
+					}
+					elseif(isset($_SESSION['isLoggedIn']))
+					{
+						?>
+						<div class="col-md-4 col-md-offset-4">
+					    	<form action="backend/addCart.php" method="post">
+					            <input type="submit" class="btn btn-warning" value="Offer Trade">
+					        </form>
+					    </div>
+					    <?php
+					}
+				?>
 				</div>
 
-				<h1>Books</h1>
-				<div class="table-responsive">
-				  <table class="table">
-			      <thead>
-			          <tr>
-			          <th>Book Name</th>
-			          <th>Book Description</th>
-			          <th>Trading For</th>
-			          <th>Trader</th>
-			          </tr>
-			      </thead>
-			      <tbody>
-			          <?php
-			              echo drawBooks();
-			          ?>
-			      </tbody>
-			      </table>
-				</div>
-
-				<div style="float: left; text-align:left; margin-top:10px">
-					<form action="index.php" method="post">
-						<button class="btn btn-large btn-primary" type="submit">Back</button>
-					</form>
-				</div>
 			</div>
+	</div>
+	</div>
 
-</div>
-
-<div class="container">
+	<div class="container">
         <div id="popup">
             <div class="row" id="popupForm">
                 <button id="exit" class="btn btn-primary" style="padding-right:20px;" onclick="div_hide()">X</button>
@@ -274,12 +296,11 @@
                     <h1>Sign Up</h1>
                     <form action="backend/signup.php" method="post">
 
-                    <input type="text" name="username" class="form-control" style="margin: 5px" placeholder="Username" required >
-                    <input type="text" name="email" class="form-control" style="margin: 5px" placeholder="Email Address" required >
-					<input type="password" name="password1" class="form-control" style="margin: 5px" placeholder="Password" required >
-                    <input type="password" name="password2" class="form-control" style="margin: 5px" placeholder="Confirm Password" required >
-					<input type="text" name="location" class="form-control" style="margin: 5px" placeholder="Location/Address" required >
-					<input type="number" size="11" name="contactno" class="form-control" style="margin: 5px" placeholder="Contect Number" required >
+                    <input type="text" name="username" class="form-control" style="margin: 5px" placeholder="Username">
+                    <input type="password" name="password1" class="form-control" style="margin: 5px" placeholder="Password">
+                    <input type="password" name="password2" class="form-control" style="margin: 5px" placeholder="Confirm Password">
+
+               
 
                     <div class="row">
                         <div class="col-md-3">
@@ -295,7 +316,18 @@
         </div>
         </div>
     </div>
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.easing.min.js"></script>
+	<script src="js/jquery.fittext.js"></script>
+	<script src="js/wow.min.js"></script>
+	<script src="js/creative.js"></script>
 
+	<script type="text/javascript">
+	function submitLibraryForm(){
+		  document.libraryForm.submit();
+	}
+	</script>
 	<script type="text/javascript">
     function div_show()
     {

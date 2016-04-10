@@ -154,6 +154,10 @@
 							$user = getUser();
 							?>
 							
+							<!-- add something later here
+							<li><a href="">Offers/Notifcations</a></li>
+							-->
+							
 							<li><a href="javascript: submitLibraryForm()">Library</a></li>
 							<?php
 								

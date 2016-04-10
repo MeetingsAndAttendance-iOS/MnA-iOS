@@ -146,7 +146,6 @@
 				<!-- If the form libraryForm is located here, there would be a newline after Library link in the navbar !-->
 				<li><a href="javascript: submitLibraryForm()">Library</a></li>
 			  <?php
-                }
                 if($_SESSION['isAdmin'] == 1)
                 {
                   ?>

@@ -13,8 +13,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="This is a wholesaler website.">
-    <meta name="author" content="Dominic Truelen, Justin Balderas, Patricia Regarde, Patrick Dominguiano, Cyan Villarin">
+    <meta name="description" content="This is a book trading website.">
+    <meta name="author" content="Justin Balderas, Ma. Angelica Dino, Patrick Joy Dominguiano">
 
     <title>BookSwapperPH</title>
 
@@ -134,7 +134,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="index.php">BooksSwapperPH</a>
+                <a class="navbar-brand page-scroll" href="index.php">BookSwapperPH</a>
 
 				<!-- SearchBar and Submit Button -->
 				<form class="navbar-form navbar-left" action="tempSearch.php" method="post" role="search">
@@ -155,7 +155,7 @@
 						{
 							$user = getUser();
 							?>
-										<!-- If the form libraru\yForm is located here, there would be a newline after Library link in the navbar !-->
+										<!-- If the form libraryForm is located here, there would be a newline after Library link in the navbar !-->
 										<li><a href="javascript: submitLibraryForm()">Library</a></li>
 									<?php
 								
@@ -169,7 +169,6 @@
 							<li><a href="tempProfile.php"><?php echo $_SESSION['name']; ?></a></li>
 							<li><a href="backend/logout.php">Log Out</a></li>
 
-							<!-- Is it okay if I put this here !-->
 							<form name="libraryForm" action="tempLibrary.php" method="post">
 								<input type="hidden" name="tempID" value="<?php echo $_SESSION['id']; ?>">
 							</form>
@@ -198,33 +197,55 @@
     		<div class = "col-md-12">
 				<?php
 					$library = getLibrary();
-					foreach($library as $temp)
-					{
-						?>
-
+					if(empty($library)){
+						
+					?>
 						<div class ="col-md-4">
-
 							<div class = "thumbnail">
 								<div class = "caption">
-
-
-									<h4 class = "pull-right"><?php echo $temp->price; ?></h4>
-
-
-									<form name = "viewProductForm" action="tempViewProduct.php" method="post">
-										<input type="hidden" name="productID" value="<?php echo $temp->productID; ?>">
-										<div class = "pull-left"><button type="submit" class="btn btn-link btn-md"><?php echo $temp->productName; ?></button></div>
-									</form>
-
-									<p><br> <?php echo $temp->productDescription;?> </p>
+									<li><a href="tempAddBook.php">Add Book</a></li>
 								</div>
 							</div>
-						</div>
-
-
-						<?php
+						</div>							
+					<?php
+						
 					}
-				?>
+					$library = getLibrary();
+					$user = getUser();
+					if(!empty($library)){
+						if(($user->userID) == ($_SESSION['tempID'])){
+					?>
+							<div class ="col-md-4">
+								<div class = "thumbnail">
+									<div class = "caption">
+										<li><a href="tempAddBook.php">Add Book</a></li>
+									</div>
+								</div>
+							</div>	
+					<?php
+						}
+						foreach($library as $temp)
+						{
+							?>
+							
+							<div class ="col-md-4">
+								<div class = "thumbnail">
+									<div class = "caption">
+										<h4 class = "pull-right"><?php echo $temp->bookWant; ?></h4>
+
+										<form name = "viewBookForm" action="tempViewBook.php" method="post">
+											<input type="hidden" name="bookID" value="<?php echo $temp->bookID; ?>">
+											<div class = "pull-left"><button type="submit" class="btn btn-link btn-md"><?php echo $temp->bookName; ?></button></div>
+										</form>
+
+										<p><br> <?php echo $temp->bookDescription;?> </p>
+									</div>
+								</div>
+							</div>
+							<?php
+						}
+					}	
+					?>
 
 			</div>
 		</div>
@@ -269,13 +290,7 @@
                     <input type="password" name="password1" class="form-control" style="margin: 5px" placeholder="Password">
                     <input type="password" name="password2" class="form-control" style="margin: 5px" placeholder="Confirm Password">
 
-                    <div class="row">
-                        <div class="col-md-1">
-                            <label class="checkbox">
-                                <input type="checkbox" name="seller" value="1"> Seller
-                            </label>
-                        </div>
-                    </div>
+                   
 
                     <div class="row">
                         <div class="col-md-3">
@@ -310,9 +325,6 @@
 		function submitViewUserForm(){
 			  document.viewUserForm.submit();
 		}
-		function submitShoppingCartForm(){
-				document.shoppingCartForm.submit();
-		}
 		function submitLibraryForm(){
 			  document.libraryForm.submit();
 		}
@@ -322,11 +334,11 @@
 		function submitLoginForm(){
 			  document.loginForm.submit();
 		}
-		function submitViewProductForm(){
-			  document.viewProductForm.submit();
+		function submitViewBookForm(){
+			  document.viewBookForm.submit();
 		}
-		function submitCreateProductForm(){
-			  document.createProductForm.submit();
+		function submitCreateBookForm(){
+			  document.createBookForm.submit();
 		}
 		</script>
 

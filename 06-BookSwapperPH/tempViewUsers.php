@@ -134,7 +134,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="index.php">BooksSwapperPH</a>
+                <a class="navbar-brand page-scroll" href="index.php">BookSwapperPH</a>
 
                 <!-- SearchBar and Submit Button -->
                 <form class="navbar-form navbar-left" action="tempSearch.php" method="post" role="search">
@@ -188,11 +188,6 @@
 						<form name="logoutForm" action="backend/logout.php" method="post">
 							<input type="hidden" name="tempID" value="<?php echo $_SESSION['id']; ?>">
 						</form>
-
-						<form name="shoppingCartForm" action="tempCart.php" method="post">
-							<input type="hidden" name="tempID" value="<?php echo $_SESSION['id']; ?>">
-						</form>
-
 
 						<form name="viewUserForm" action="tempViewUsers.php" method="post">
 							<input type="hidden" name="tempID" value="<?php echo $_SESSION['id']; ?>">
@@ -341,9 +336,6 @@
 		<script type="text/javascript">
 		function submitViewUserForm(){
 			  document.viewUserForm.submit();
-		}
-		function submitShoppingCartForm(){
-				document.shoppingCartForm.submit();
 		}
 		function submitLibraryForm(){
 			  document.libraryForm.submit();
