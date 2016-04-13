@@ -2,7 +2,7 @@
 	session_start();
 	include 'backend/getUser.php';
 	include 'backend/getTypes.php';
-	include 'backend/getGenres.php'
+	include 'backend/getGenres.php';
 	include 'backend/getBook.php';
 	if(isset($_POST['book']))
 	{
@@ -191,7 +191,7 @@
 	    </div>
 
 	    <div style="float: left; text-align:left; width:50%">
-	        <form action="tempViewProduct.php" method="post">
+	        <form action="tempViewBook.php" method="post">
 	            <input type="submit" class="btn btn-warning" value="Back">
 	        </form>
 	    </div>

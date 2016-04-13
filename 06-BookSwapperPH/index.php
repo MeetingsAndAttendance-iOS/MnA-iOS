@@ -211,8 +211,8 @@
                 <div class="col-md-6 col-md-offset-3">
                     <h1>Log In</h1>
                     <form action="backend/login.php" method="post">
-                    <input type="text" name="username" class="form-control" style="margin: 5px" placeholder="Username">
-                    <input type="password" name="password" class="form-control" style="margin: 5px" placeholder="Password">
+                    <input type="text" name="username" class="form-control" style="margin: 5px" placeholder="Username" required>
+                    <input type="password" name="password" class="form-control" style="margin: 5px" placeholder="Password" required>
 
                     <div class="row">
                         <div class="col-md-3">

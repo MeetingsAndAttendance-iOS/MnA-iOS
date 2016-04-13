@@ -23,15 +23,7 @@ function drawBooks()
 
 		$table .= '<td>';	
 		$table .= $temp->bookAuthor;
-		$table .= '</td>';
-
-		$calendar .= "<td class='calendar-day'>";
-		$calendar .= $temp->bookCondition;
-		$calendar .= "</td>";
-		
-		$calendar .= "<td class='calendar-day'>";
-		$calendar .= $temp->addedComments;
-		$calendar .= "</td>";		
+		$table .= '</td>';	
 		
 		$table .= '<td>';	
 		$table .= $temp->bookWant;
@@ -70,14 +62,6 @@ function drawBooks()
 
 		$calendar .= "<td class='calendar-day'>";
 		$calendar .= $temp->bookAuthor;
-		$calendar .= "</td>";
-
-		$calendar .= "<td class='calendar-day'>";
-		$calendar .= $temp->bookCondition;
-		$calendar .= "</td>";
-		
-		$calendar .= "<td class='calendar-day'>";
-		$calendar .= $temp->addedComments;
 		$calendar .= "</td>";
 		
 		$calendar .= "<td class='calendar-day'>";

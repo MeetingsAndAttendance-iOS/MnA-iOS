@@ -189,6 +189,7 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
+	
 <div class="container text-center">
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
@@ -218,8 +219,6 @@
 			          <tr>
 			          <th>Book Name</th>
 			          <th>Book Author</th>
-			          <th>Book Condition</th>
-			          <th>Added Comments</th>
 					  <th>Trading For</th>
 			          <th>Trader</th>
 			          </tr>

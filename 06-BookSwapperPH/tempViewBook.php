@@ -258,7 +258,7 @@
 					{
 						?>
 						<div class="col-md-4 col-md-offset-4">
-					    	<form action="backend/addCart.php" method="post">
+					    	<form action="backend/addOffer.php" method="post">
 					            <input type="submit" class="btn btn-warning" value="Offer Trade">
 					        </form>
 					    </div>
