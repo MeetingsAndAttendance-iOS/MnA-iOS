@@ -73,15 +73,13 @@
                     <?php
                         $user = getUser();
                     ?>
-                    <li><a href="tempCart.php">Shopping Cart</a></li>
-
                                 <li><a href="tempAdmin.php">Admin Stuff</a></li>
 
                     <li><a href="tempProfile.php"><?php echo $_SESSION['name']; ?></a></li>
                     <li><a href="backend/logout.php">Log Out</a></li>
 
                     <!-- Is it okay if I put this here !-->
-                    <form name="galleryForm" action="tempGallery.php" method="post">
+                    <form name="libraryForm" action="tempLibrary.php" method="post">
                         <input type="hidden" name="tempID" value="<?php echo $_SESSION['id']; ?>">
                     </form>
 

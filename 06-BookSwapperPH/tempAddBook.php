@@ -7,8 +7,8 @@
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="This is a wholesaler website.">
-    <meta name="author" content="Dominic Truelen, Justin Balderas, Patricia Regarde, Patrick Dominguiano, Cyan Villarin">
+    <meta name="description" content="This is a book trading website.">
+    <meta name="author" content="Justin Balderas, Ma. Angelica Dino, Patrick Joy Dominguiano">
 
     <title>BookSwapperPH</title>
 
@@ -96,17 +96,7 @@
 	              </div>
 	            </div>
 
-	            <div class="panel panel-primary">
-	              <div class="panel-heading">
-	                <h3 class="panel-title">Description</h3>
-	              </div>
-
-	              <div class="panel-body">
-	                <textarea name="description" rows="10" cols="30"></textarea>
-	              </div>
-	            </div>  
-
-	            <div class="panel panel-primary">
+				<div class="panel panel-primary">
 	              <div class="panel-heading">
 	                <h3 class="panel-title">Trading For</h3>
 	              </div>
@@ -114,6 +104,76 @@
 	                <input type="text" class="form-control" name="want" >
 	              </div>
 	            </div>
+				
+				<div class="panel panel-primary">
+	              <div class="panel-heading">
+	                <h3 class="panel-title">Book Author</h3>
+	              </div>
+	              <div class="panel-body">
+	                <input type="text" class="form-control" name="author" >
+	              </div>
+	            </div>
+				
+				<div class="panel panel-primary">
+	              <div class="panel-heading">
+	                <h3 class="panel-title">Type</h3>
+	              </div>
+	              <div class="panel-body">
+	                <select name="type">
+						<?php
+							$types = getTypes();
+							foreach($types as $type)
+							{
+								?>
+								<option value="<?php echo $type->typeID; ?>"><?php echo $type->typeName; ?></option>
+								<?php
+							}
+						?>
+					</select>
+	              </div>
+				</div>  
+				 
+				 
+				<div class="panel panel-primary">	           				 
+				  <div class="panel-heading">
+	                <h3 class="panel-title">Genre</h3>
+	              </div>
+	              <div class="panel-body">
+	                <select name="genre">
+						<?php
+							$genres = getGenres();
+							foreach($genres as $genre)
+							{
+								?>
+								<option value="<?php echo $genre->genreID; ?>"><?php echo $genre->genreName; ?></option>
+								<?php
+							}
+						?>
+					</select>
+	              </div>
+				</div>
+				
+				<div class="panel panel-primary">
+	              <div class="panel-heading">
+	                <h3 class="panel-title">Book Condition</h3>
+	              </div>
+	              <div class="panel-body">
+	                <input type="text" class="form-control" name="condition" >
+	              </div>
+	            </div>
+				
+				
+	            <div class="panel panel-primary">
+	              <div class="panel-heading">
+	                <h3 class="panel-title">Added Comments</h3>
+	              </div>
+
+	              <div class="panel-body">
+	                <textarea name="comment" rows="10" cols="30"></textarea>
+	              </div>
+	            </div>  
+			
+	            
 	
 	
 	    <div class="row">
@@ -136,10 +196,22 @@
 <script src="js/jquery.fittext.js"></script>
 <script src="js/wow.min.js"></script>
 <script src="js/creative.js"></script>
-<script type="text/javascript">
-function submitLibraryForm(){
-	  document.libraryForm.submit();
-}
-</script>
+
+		<!-- Script for enabling links to submit form !-->
+		<script type="text/javascript">
+		function submitViewUserForm(){
+			  document.viewUserForm.submit();
+		}
+		function submitLibraryForm(){
+			  document.libraryForm.submit();
+		}
+		function submitLogoutForm(){
+			  document.logoutForm.submit();
+		}
+		function submitLoginForm(){
+			  document.loginForm.submit();
+		}
+
+		</script>
 </body>
 </html>

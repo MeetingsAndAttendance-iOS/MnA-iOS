@@ -5,11 +5,15 @@
 		$DBH = new PDO("mysql:host=localhost;dbname=bookswapperph", "root", "");
 
 		$name = $_POST['name'];
-		$description = $_POST['description'];
 		$want = $_POST['want'];
-
-		$data = array('name' => $name, 'description' => $description, 'want' => $want);
-		$STH = $DBH->prepare("INSERT INTO books (bookName, bookDescription, bookwant) VALUES (:name, :description, :want)");
+		$author = $_POST['author'];
+		$type = $_POST['type'];
+		$genre = $_POST['genre']
+		$condition = $_POST['condition'];
+		$comment = $_POST['comment'];
+		
+		$data = array('name' => $name, 'want' => $want, 'author' => $author, 'type' => $type, 'genre' => $genre, 'condition' => $condition, 'comment' => $comment);
+		$STH = $DBH->prepare("INSERT INTO books (bookName, bookWant, bookAuthor, type, genre, bookCondition, addedComments) VALUES (:name, :want, :author, :type, :genre, :condition, :comment )");
 
 		$STH->execute($data);
 

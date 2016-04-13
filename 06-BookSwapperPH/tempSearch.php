@@ -318,6 +318,27 @@
     {
         document.getElementById('popup1').style.display = "none";
     }
+	
+	
     </script>
+	
+	<script src="js/creative.js"></script>
+
+		<!-- Script for enabling links to submit form !-->
+		<script type="text/javascript">
+		function submitViewUserForm(){
+			  document.viewUserForm.submit();
+		}
+		function submitLibraryForm(){
+			  document.libraryForm.submit();
+		}
+		function submitLogoutForm(){
+			  document.logoutForm.submit();
+		}
+		function submitLoginForm(){
+			  document.loginForm.submit();
+		}
+
+		</script>
 </body>
 </html>

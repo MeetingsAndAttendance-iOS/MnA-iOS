@@ -202,14 +202,24 @@
 
 	            <div class="panel panel-primary">
 	              <div class="panel-heading">
-	                <h3 class="panel-title">Description</h3>
+	                <h3 class="panel-title">Author</h3>
 	              </div>
 
 	              <div class="panel-body">
-	                <?php echo $book->bookDescription; ?>
+	                <?php echo $book->bookAuthor; ?>
 	              </div>
 	            </div>
 
+				<div class="panel panel-primary">
+	              <div class="panel-heading">
+	                <h3 class="panel-title">Condition</h3>
+	              </div>
+
+	              <div class="panel-body">
+	                <?php echo $book->bookCondition; ?>
+	              </div>
+	            </div>
+				
 	            <div class="panel panel-primary">
 	              <div class="panel-heading">
 	                <h3 class="panel-title">Trading For</h3>

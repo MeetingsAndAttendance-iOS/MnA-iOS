@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 12, 2016 at 10:35 AM
+-- Generation Time: Apr 11, 2016 at 06:56 AM
 -- Server version: 5.6.25
 -- PHP Version: 5.6.11
 
@@ -38,6 +38,15 @@ CREATE TABLE IF NOT EXISTS `books` (
   `addedComments` text NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `books`
+--
+
+INSERT INTO `books` (`bookID`, `bookName`, `restriction`, `bookWant`, `bookAuthor`, `type`, `genre`, `bookCondition`, `addedComments`) VALUES
+(8, 'HP1', 0, 'HP2', '', 0, 0, '', ''),
+(9, 'Hunger Games 1', 0, 'Anything', '', 0, 0, '', ''),
+(10, 'Hunger Games', 0, '', '', 0, 0, '', '');
+
 -- --------------------------------------------------------
 
 --
@@ -49,47 +58,6 @@ CREATE TABLE IF NOT EXISTS `genres` (
   `genreName` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `genres`
---
-
-INSERT INTO `genres` (`genreID`, `genreName`) VALUES
-(1,'Action'),
-(2,'Adventure'),
-(3,'Classic'),
-(4,'Comedy'),
-(5,'Comic/Graphic Novel'),
-(6,'Crime/Detective'),
-(7,'Drama'),
-(8,'Fable'),
-(9,'Fairy Tale'),
-(10,'Fanfiction'),
-(11,'Fantasy'),
-(12,'Folklore'),
-(13,'Horror'),
-(14,'Humour'),
-(15,'Legend'),
-(16,'Magical Realism'),
-(17,'Metafiction'),
-(18,'Mystery'),
-(19,'Romance Novel'),
-(20,'Satire'),
-(21,'Suspense/Thriller'),
-(22,'Tall Tale'),
-(23,'Tragedy'),
-(24,'Tragicomedy'),
-(25,'Western'),
-(26,'Bio/Autobiography'),
-(27,'Essay'),
-(28,'Personal Narrative'),
-(29,'Memoir'),
-(30,'Speech'),
-(31,'Laboratory Report'),
-(32,'Textbook'),
-(33,'Reference Book'),
-(34,'Self-help Book'),
-(35,'Journalism');
-
 -- --------------------------------------------------------
 
 --
@@ -100,8 +68,16 @@ CREATE TABLE IF NOT EXISTS `library` (
   `libraryID` int(11) NOT NULL,
   `userID` int(11) NOT NULL,
   `bookID` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `library`
+--
+
+INSERT INTO `library` (`libraryID`, `userID`, `bookID`) VALUES
+(8, 1, 8),
+(9, 2, 9),
+(10, 1, 10);
 
 -- --------------------------------------------------------
 
@@ -125,16 +101,8 @@ CREATE TABLE IF NOT EXISTS `offers` (
 
 CREATE TABLE IF NOT EXISTS `types` (
   `typeID` int(11) NOT NULL,
-  `typeName` varchar(100) NOT NULL
+  `typeNam` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `types`
---
-
-INSERT INTO `types` (`typeID`, `typeName`) VALUES
-(1, 'Fiction'),
-(2, 'Non-Fiction');
 
 -- --------------------------------------------------------
 
@@ -221,7 +189,7 @@ ALTER TABLE `genres`
 -- AUTO_INCREMENT for table `library`
 --
 ALTER TABLE `library`
-  MODIFY `libraryID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+  MODIFY `libraryID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `offers`
 --

@@ -238,7 +238,8 @@
 											<div class = "pull-left"><button type="submit" class="btn btn-link btn-md"><?php echo $temp->bookName; ?></button></div>
 										</form>
 
-										<p><br> <?php echo $temp->bookDescription;?> </p>
+										<p><br> <?php echo $temp->bookAuthor;?> </p>
+										<p><br> <?php echo $temp->bookCondition;?> </p>
 									</div>
 								</div>
 							</div>

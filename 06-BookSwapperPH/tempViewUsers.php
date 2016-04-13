@@ -197,9 +197,6 @@
 							<input type="hidden" name="tempID" value="<?php echo $_SESSION['id']; ?>">
 						</form>
 
-						<form name = "createProductForm" action="tempCreateProduct.php" method="post">
-							<input type="hidden" name = "tempID" value="<?php echo $_SESSION['id']; ?>">
-						</form>
 
 						<?php
 							}
