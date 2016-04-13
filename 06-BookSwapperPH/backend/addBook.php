@@ -8,7 +8,7 @@
 		$want = $_POST['want'];
 		$author = $_POST['author'];
 		$type = $_POST['type'];
-		$genre = $_POST['genre']
+		$genre = $_POST['genre'];
 		$condition = $_POST['condition'];
 		$comment = $_POST['comment'];
 		

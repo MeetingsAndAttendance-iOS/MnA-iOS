@@ -3,6 +3,12 @@
 	include 'backend/getUser.php';
 	include 'backend/getTypes.php';
 	include 'backend/getGenres.php'
+	include 'backend/getBook.php';
+	if(isset($_POST['book']))
+	{
+		$_SESSION['book'] = $_POST['book'];
+	}
+	$book = getBook();
 ?>
 <html lang="en">
 <head>
@@ -26,9 +32,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/creative.css" type="text/css">
     <link rel="stylesheet" href="css/styles.css" type="text/css">
-
 </head>
-
 
 <body class="full">
 	<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
@@ -56,7 +60,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
 					<li><a href="tempViewUsers.php">View Users</a></li>
-
+                                
 					<?php
 						$user = getUser();
 					?>
@@ -72,9 +76,11 @@
 					<li><a href="tempProfile.php"><?php echo $_SESSION['name']; ?></a></li>
 					<li><a href="backend/logout.php">Log Out</a></li>
 
-					<form name="libraryForm" action="tempLibrary.php" method="post">
+
+					<form name="galleryForm" action="tempLibrary.php" method="post">
 						<input type="hidden" name="tempID" value="<?php echo $_SESSION['id']; ?>">
 					</form>
+
 
                 </ul>
             </div>
@@ -82,10 +88,10 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
-	
+
 <div class="container text-center">
-<div class="col-md-6 col-md-offset-3"> 
-	<div class="boxview">
+	<div class="col-md-6 col-md-offset-3"> 
+		<div class="boxview">
 	    <h1>Trade your book now!</h1>
 	    <form action="backend/addBook.php" method="post">
 	            <div class="panel panel-primary">
@@ -175,22 +181,26 @@
 	                <input type="text" class="form-control" name="want" >
 	              </div>
 	            </div>
-							  
-	
-	
-	    <div class="row">
-	   		<div class="col-md-4">
-	   			<a class="btn btn-large btn-primary" href="tempLibrary.php">Back</a>
-	   		</div>
-	   		<div class="col-md-4 col-md-offset-4">
+	    
 
-	   			<input type="submit" class="btn btn-large btn-primary" value="Submit">
-	   		</div>
+	    
+
+	    <div style="float: right; text-align:right; width:50%">
+	            <input type="submit" class="btn btn-warning" value="Submit">
+	        </form>
 	    </div>
-	    </form>
+
+	    <div style="float: left; text-align:left; width:50%">
+	        <form action="tempViewProduct.php" method="post">
+	            <input type="submit" class="btn btn-warning" value="Back">
+	        </form>
+	    </div>
+
+	    </div>
+
 	</div>
 
-</div>
+
 </div>
 <script src="js/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -198,22 +208,5 @@
 <script src="js/jquery.fittext.js"></script>
 <script src="js/wow.min.js"></script>
 <script src="js/creative.js"></script>
-
-		<!-- Script for enabling links to submit form !-->
-		<script type="text/javascript">
-		function submitViewUserForm(){
-			  document.viewUserForm.submit();
-		}
-		function submitLibraryForm(){
-			  document.libraryForm.submit();
-		}
-		function submitLogoutForm(){
-			  document.logoutForm.submit();
-		}
-		function submitLoginForm(){
-			  document.loginForm.submit();
-		}
-
-		</script>
 </body>
 </html>

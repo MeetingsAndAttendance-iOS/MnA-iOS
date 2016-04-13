@@ -217,8 +217,10 @@
 			      <thead>
 			          <tr>
 			          <th>Book Name</th>
-			          <th>Book Description</th>
-			          <th>Trading For</th>
+			          <th>Book Author</th>
+			          <th>Book Condition</th>
+			          <th>Added Comments</th>
+					  <th>Trading For</th>
 			          <th>Trader</th>
 			          </tr>
 			      </thead>

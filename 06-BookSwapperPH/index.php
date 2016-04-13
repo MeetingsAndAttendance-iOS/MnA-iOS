@@ -244,7 +244,7 @@
 					<input type="password" name="password1" class="form-control" style="margin: 5px" placeholder="Password" required >
                     <input type="password" name="password2" class="form-control" style="margin: 5px" placeholder="Confirm Password" required >
 					<input type="text" name="location" class="form-control" style="margin: 5px" placeholder="Location/Address" required >
-					<input type="number" size="11" name="contactno" class="form-control" style="margin: 5px" placeholder="Contect Number" required >
+					<input type="number" size="11" name="contactno" class="form-control" style="margin: 5px" placeholder="Contact Number" required >
 					
                     <div class="row">
                         <div class="col-md-3">

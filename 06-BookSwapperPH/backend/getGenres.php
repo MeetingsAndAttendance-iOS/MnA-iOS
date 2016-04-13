@@ -3,7 +3,7 @@
     {
         $DBH = new PDO("mysql:host=localhost;dbname=bookswapperph", "root", "");
     
-        $STH = $DBH->prepare("SELECT * FROM genre");
+        $STH = $DBH->prepare("SELECT * FROM genres");
 
         $STH->execute();
         $genres = $STH->fetchAll(PDO::FETCH_OBJ);

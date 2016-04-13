@@ -22,9 +22,17 @@ function drawBooks()
 		$table .= "</td>";
 
 		$table .= '<td>';	
-		$table .= $temp->bookDescription;
+		$table .= $temp->bookAuthor;
 		$table .= '</td>';
 
+		$calendar .= "<td class='calendar-day'>";
+		$calendar .= $temp->bookCondition;
+		$calendar .= "</td>";
+		
+		$calendar .= "<td class='calendar-day'>";
+		$calendar .= $temp->addedComments;
+		$calendar .= "</td>";		
+		
 		$table .= '<td>';	
 		$table .= $temp->bookWant;
 		$table .= '</td>';
@@ -45,7 +53,7 @@ function drawBooks()
 	$calendar = '<table cellpadding="0" cellspacing="0" class="calendar">';
 
 	/* table headings */
-	$headings = array('Book Name', 'Description', 'Trading For', 'Trader');
+	$headings = array('Book Name', 'Book Author', 'Book Condition', ' Added Comments',  'Trading For', 'Trader');
 	$calendar.= '<tr class="calendar-row"><td class="calendar-day-head">'.implode('</td><td class="calendar-day-head">',$headings).'</td></tr>';
 
 	$books = getbooks($_SESSION['search']);
@@ -61,9 +69,17 @@ function drawBooks()
 		$calendar .= "</td>";
 
 		$calendar .= "<td class='calendar-day'>";
-		$calendar .= $temp->bookDescription;
+		$calendar .= $temp->bookAuthor;
 		$calendar .= "</td>";
 
+		$calendar .= "<td class='calendar-day'>";
+		$calendar .= $temp->bookCondition;
+		$calendar .= "</td>";
+		
+		$calendar .= "<td class='calendar-day'>";
+		$calendar .= $temp->addedComments;
+		$calendar .= "</td>";
+		
 		$calendar .= "<td class='calendar-day'>";
 		$calendar .= $temp->bookWant;
 		$calendar .= "</td>";

@@ -240,7 +240,7 @@
 					{
 						?>
 					    <div class="col-md-4">
-					    	<form action="tempEditProduct.php" method="post">
+					    	<form action="tempEditBook.php" method="post">
 					            <input type="submit" class="btn btn-warning" value="Edit">
 					        </form>
 					    </div>

@@ -239,7 +239,6 @@
 										</form>
 
 										<p><br> <?php echo $temp->bookAuthor;?> </p>
-										<p><br> <?php echo $temp->bookCondition;?> </p>
 									</div>
 								</div>
 							</div>
