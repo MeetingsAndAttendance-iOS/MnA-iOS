@@ -2,7 +2,7 @@
 /*
 	Code from http://davidwalsh.name/php-calendar
 */
-include 'getOffer.php';
+include 'getTrade.php';
 ?>
 
 <html>
@@ -51,7 +51,7 @@ function draw_calendar()
 	$headings = array('Book Name','Book Author','Condtion','Trading For');
 	$calendar.= '<tr class="calendar-row warning"><td class="calendar-day-head"><h5><b>'.implode('</b></h5></td><td class="calendar-day-head"><h5><b>',$headings).'</td></b></h5></tr>';
 
-	$trade = getOffer();
+	$trade = getTrade();
 	#$x = 1;
 	foreach($trade as $temp)
 	{

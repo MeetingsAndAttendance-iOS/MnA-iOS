@@ -2,9 +2,9 @@
 	session_start();
 	include 'backend/getOffers.php';
 	include 'backend/getUser.php';
-	if(isset($_SESSION['orderID']))
+	if(isset($_SESSION['offerID']))
     {
-        unset($_SESSION['orderID']);
+        unset($_SESSION['offerID']);
     }
 ?>
 
@@ -100,11 +100,6 @@
 							<input type="hidden" name="tempID" value="<?php echo $_SESSION['id']; ?>">
 						</form>
 
-						<form name="shoppingCartForm" action="tempCart.php" method="post">							
-							<input type="hidden" name="tempID" value="<?php echo $_SESSION['id']; ?>">
-						</form>
-							
-
 						<form name="viewUserForm" action="tempViewUsers.php" method="post">
 							<input type="hidden" name="tempID" value="<?php echo $_SESSION['id']; ?>">
 						</form>
@@ -156,7 +151,7 @@
 						<div class = "panel-body">
 
 							<?php
-								$books = get_offerproducts();
+								$books = get_offerbooks();
 								foreach($books as $book)
 								{
 									?>

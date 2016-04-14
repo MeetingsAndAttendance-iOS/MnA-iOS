@@ -151,7 +151,7 @@
               </div>
 
               <div class="col-md-4">
-                <a class="btn btn-large btn-primary" href="tempLibrary.php">Library</a>
+                <a class="btn btn-large btn-primary" href="tempViewOffers.php">View Offers</a>
               </div>
   
               <div class="col-md-4">

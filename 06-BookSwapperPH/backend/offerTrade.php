@@ -6,13 +6,13 @@
 		
 		$data = array('id' => $_SESSION['id'], 'bookToOffer' => $_POST['bookToOffer'], 'message' => $_POST['message']);
 		
-		$STH = $DBH->("INSERT INTO offers (userID, offerName, message) VALUES (:id, :bookToOffer, :message)");
-		$STH -> execute($data);
-		$row = $DBH->lastInsertID();
+		 $STH = $DBH->prepare("INSERT INTO offers (userID, offerName, message) VALUES (:id, :bookToOffer, :message)");
+        $STH->execute($data);
+        $row = $DBH->lastInsertId();
 		
 		$data = array('id' => $SESSION['id']);
 		
-		$STH = $DBH->prepare("SELECT * FROM offers WHERE userID = :id");
+		$STH = $DBH->prepare("SELECT * FROM trade WHERE userID = :id");
 		$STH->execute($data);
 		$books = $STH->fetchAll(PDO::FETCH_OBJ);
 		
@@ -26,7 +26,7 @@
 		}
 		
 		$data = array('id' => $_SESSION['id']);
-		$STH = $DBH->prepare("DELETE FROM offers WHERE userID = :id");
+		$STH = $DBH->prepare("DELETE FROM trade WHERE userID = :id");
 		$STH->execute($data);
 		
 		$DBH = null;

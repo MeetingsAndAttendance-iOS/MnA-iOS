@@ -5,7 +5,7 @@ function populate_table()
 	$table="";
 
 	$users = get_offers();
-
+	
 	foreach ($users as $user) 
 	{
 		$table .= '<tr>';
@@ -18,19 +18,11 @@ function populate_table()
 		$table .= "</td>";
 
 		$table .= '<td>';	
-		$table .= $user->orderDate;
+		$table .= $user->offerName;
 		$table .= '</td>';
 
 		$table .= '<td>';	
-		$table .= $user->deliveryDate;
-		$table .= '</td>';
-
-		$table .= '<td>';	
-		$table .= $user->address;
-		$table .= '</td>';
-
-		$table .= '<td>';	
-		$table .= $user->name;
+		$table .= $user->message;
 		$table .= '</td>';
 
 		$table .= '</td>';
@@ -41,25 +33,27 @@ function populate_table()
 	return $table;
 }
 
-function get_orders()
+function get_offers()
 {
 	try
-    {
-        $DBH = new PDO("mysql:host=localhost;dbname=bookswapperph", "root", "");
+	{
+		$DBH = new PDO("mysql:host=localhost;dbname=bookswapperph","root","");
+		
+		$data = array("id" => $_SESSION['id']);
+		$STH = $DBH->prepare("SELECT * FROM offers WHERE userID = :id");
+		$STH->execute($data);
+		$users = $STH->fetchALL(PDO::FETCH_OBJ);
+		
+		$DBH = null;
+		return $users;
+	}
+	catch(PDOException $e)
+	{
+		echo $e->getMessage();
+	}
 
-        $data = array("id" => $_SESSION['id']);
-        $STH = $DBH->prepare("SELECT * FROM offers JOIN autoorder on (orders.autoOrder = autoorder.autoOrderID) WHERE userID = :id");
-        $STH->execute($data);
-        $users = $STH->fetchAll(PDO::FETCH_OBJ);
-
-        $DBH = null;
-        return $users;
-    }
-    catch(PDOException $e)
-    {
-        echo $e->getMessage();
-    }
 }
+
 
 function get_offerbooks(){
 	try{

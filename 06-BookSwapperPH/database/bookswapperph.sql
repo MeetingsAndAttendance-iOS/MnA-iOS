@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 14, 2016 at 05:58 AM
+-- Generation Time: Apr 14, 2016 at 06:34 AM
 -- Server version: 5.6.25
 -- PHP Version: 5.6.11
 
@@ -132,7 +132,7 @@ INSERT INTO `library` (`libraryID`, `userID`, `bookID`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `offerbooks` (
-  `tradeID` int(11) NOT NULL,
+  `offerBookID` int(11) NOT NULL,
   `bookID` int(11) NOT NULL,
   `offerID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -148,6 +148,18 @@ CREATE TABLE IF NOT EXISTS `offers` (
   `userID` int(11) NOT NULL,
   `offerName` varchar(100) NOT NULL,
   `message` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `trade`
+--
+
+CREATE TABLE IF NOT EXISTS `trade` (
+  `tradeID` int(11) NOT NULL,
+  `userID` int(11) NOT NULL,
+  `bookID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -230,13 +242,19 @@ ALTER TABLE `library`
 -- Indexes for table `offerbooks`
 --
 ALTER TABLE `offerbooks`
-  ADD PRIMARY KEY (`tradeID`);
+  ADD PRIMARY KEY (`offerBookID`);
 
 --
 -- Indexes for table `offers`
 --
 ALTER TABLE `offers`
   ADD PRIMARY KEY (`offerID`);
+
+--
+-- Indexes for table `trade`
+--
+ALTER TABLE `trade`
+  ADD PRIMARY KEY (`tradeID`);
 
 --
 -- Indexes for table `types`
@@ -273,12 +291,17 @@ ALTER TABLE `library`
 -- AUTO_INCREMENT for table `offerbooks`
 --
 ALTER TABLE `offerbooks`
-  MODIFY `tradeID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `offerBookID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `offers`
 --
 ALTER TABLE `offers`
   MODIFY `offerID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `trade`
+--
+ALTER TABLE `trade`
+  MODIFY `tradeID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `types`
 --

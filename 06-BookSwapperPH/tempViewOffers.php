@@ -103,9 +103,8 @@
       <thead>
           <tr>
           <th>#</th>
-          <th>OrderDate</th>
-          <th>DeliverDate</th>
-          <th>Address</th>
+          <th>BookOffered</th>
+          <th>Message</th>
           <th></th>
           </tr>
       </thead>
