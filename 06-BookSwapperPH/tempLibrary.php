@@ -197,7 +197,7 @@
     		<div class = "col-md-12">
 				<?php
 					$library = getLibrary();
-					if(empty($library)){
+					if((empty($library)) && (isset($_SESSION['isLoggedIn']))){
 						
 					?>
 						<div class ="col-md-4">
@@ -212,7 +212,7 @@
 					}
 					$library = getLibrary();
 					$user = getUser();
-					if(!empty($library)){
+					if((!empty($library)) && (isset($_SESSION['isLoggedIn']))){
 						if(($user->userID) == ($_SESSION['tempID'])){
 					?>
 							<div class ="col-md-4">

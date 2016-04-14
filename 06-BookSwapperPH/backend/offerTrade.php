@@ -2,11 +2,11 @@
 	session_start();
 	try
 	{
-		$DBH = new PDO("mysql:host=localhost;dbname=bookswapperph","root","");
+		$DBH = new PDO("mysql:host=localhost;dbname=bookswapperph","root", "");
 		
 		$data = array('id' => $_SESSION['id'], 'bookToOffer' => $_POST['bookToOffer'], 'message' => $_POST['message']);
 		
-		$STH = $DBH -> ("INSERT INTO offers (userID, offerName, message) VALUES (:id, :bookToOffer, :messagex)");
+		$STH = $DBH->("INSERT INTO offers (userID, offerName, message) VALUES (:id, :bookToOffer, :message)");
 		$STH -> execute($data);
 		$row = $DBH->lastInsertID();
 		

@@ -103,7 +103,7 @@
 						</form>
 
 						<form name="offerTradeForm" action="tempOfferTrade.php" method="post">							
-							<input type="hidden" name="tempID" value="<?php echo $_SESSION['id']; ?>">
+						<input type="hidden" name="tempID" value="<?php echo $_SESSION['id']; ?>">
 						</form>
 							
 
@@ -153,11 +153,12 @@
 
 
 					<form action="backend/offerTrade.php" method="post">
-						<h5> Book to Offer: 
-						<input type="text" class = "form-control" name="bookToOffer">
-						</h5>
-						<h5> Message: 
-						<input type="text" class = "form-control" name="message">
+						<h5> 
+						Book to Offer: 
+							<input type="text" class = "form-control" name="bookToOffer">
+							<br>
+						Message: 
+							<input type="text" class = "form-control" name="message">
 						</h5>
 						<input class = "pull-right btn btn-success" type="submit" value="Offer">
 					</form>
