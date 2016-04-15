@@ -172,6 +172,7 @@
 								<li><a onclick="div_show1()">Sign Up</a></li>
 								<li><a onclick="div_show()">Log In</a></li>
 							<?php
+							
 						}
 					?>
 

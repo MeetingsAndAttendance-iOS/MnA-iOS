@@ -72,7 +72,7 @@
 
     /* Safari, Chrome and Opera > 12.1 */
     @-webkit-keyframes fadein {
-        from { opacity: 0; }
+        from { opacity: 0; }ge
         to   { opacity: .95; }
     }
 
@@ -141,6 +141,7 @@
             if(isset($_SESSION['isLoggedIn']))
             {
               $user = getUser();
+              // echo
               ?>
              
 				<!-- If the form libraryForm is located here, there would be a newline after Library link in the navbar !-->
@@ -331,7 +332,7 @@
 
     function div_hide1()
     {
-        document.getElementById('popup1').style.display = "none";
+        document.getElementByge('popup1').style.display = "none";
     }
     </script>
 </body>

@@ -6,14 +6,27 @@
 		
 		$data = array('id' => $_SESSION['id'], 'bookToOffer' => $_POST['bookToOffer'], 'message' => $_POST['message']);
 		
-		 $STH = $DBH->prepare("INSERT INTO offers (userID, offerName, message) VALUES (:id, :bookToOffer, :message)");
+
+		$STH = $DBH->prepare("INSERT INTO offers (userID, offerName, message) VALUES (:id, :bookToOffer, :message)");
+
         $STH->execute($data);
+
         $row = $DBH->lastInsertId();
-		
+
+        //to accepter side
+        $data = array('id' => $_SESSION['tempID'], 'bookToOffer' => $_POST['bookToOffer'], 'message' => $_POST['message']);
+
+		$STH = $DBH->prepare("INSERT INTO offers (userID, offerName, message) VALUES (:id, :bookToOffer, :message)");
+
+        $STH->execute($data);
+
+        //
+        
 		$data = array('id' => $SESSION['id']);
 		
 		$STH = $DBH->prepare("SELECT * FROM trade WHERE userID = :id");
 		$STH->execute($data);
+		
 		$books = $STH->fetchAll(PDO::FETCH_OBJ);
 		
 		$STH = $DBH->prepare("INSERT INTO offerbooks (offerID, bookID) VALUES (:row, :id)");

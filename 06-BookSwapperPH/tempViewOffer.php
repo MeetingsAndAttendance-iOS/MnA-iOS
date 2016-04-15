@@ -171,7 +171,7 @@
 			</div>
 
 			<div style = "float: left; text-align: left; width: 50%">
-				<form action="tempViewOrders.php" method="post">
+				<form action="tempViewOffers.php" method="post">
 					<input type="submit" class = "btn btn-warning" value="Back">
 				</form>
 			</div>
