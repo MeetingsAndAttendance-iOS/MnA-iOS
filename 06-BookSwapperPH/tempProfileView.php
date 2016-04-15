@@ -237,14 +237,18 @@
               <div class="col-md-4">
                 <a class="btn btn-large btn-primary" href="index.php">Back</a>
               </div>
-             
+                <?php
+                  {
+                    ?>
                     <div class="col-md-4 col-md-offset-4">
                       <form action="tempLibrary.php" method="post">
                         <input type="hidden" name="tempID" value="<?php echo $user->userID; ?>">
                         <input type="submit" class="btn btn-large btn-primary" value="Library">
                       </form>
                     </div>
-              
+                    <?php
+                  }
+                ?>
             </div>
       </div>
     </div>
