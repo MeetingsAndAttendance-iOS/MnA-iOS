@@ -151,8 +151,8 @@
 						echo draw_calendar();
 					?>
 
-
-					<form action="backend/offerTrade.php" method="post">
+						<!-- needs to reach the other user -->
+					<form action="backend/offerTrade.php" method="post"> 
 						<h5> 
 						Book to Offer: 
 							<input type="text" class = "form-control" name="bookToOffer">
