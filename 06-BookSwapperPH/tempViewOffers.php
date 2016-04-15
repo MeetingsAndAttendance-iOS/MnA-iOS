@@ -1,8 +1,11 @@
 <?php
     session_start();
-    include 'backend/getUser.php';
     include 'backend/getOffers.php';
-
+    include 'backend/getUser.php';
+	if(isset($_SESSION['offerID']))
+    {
+        unset($_SESSION['offerID']);
+    }
     if(isset($_SESSION['displayName']))
     {
         unset($_SESSION['displayName']);
@@ -10,7 +13,8 @@
         unset($_SESSION['contactNo']);
         unset($_SESSION['email']);
     }
-
+	
+	
 ?>
 
 <!DOCTYPE html>
@@ -98,7 +102,7 @@
 
 <div class="container text-center">
   <div class="table-responsive"> 
-    <h1>Offers</h1>         
+    <h1>My Trade Transactions</h1>         
       <table class="table">
       <thead>
           <tr>
@@ -113,7 +117,23 @@
               echo populate_table();
           ?>
       </tbody>
-      </table>
+     </table>
+	<h1>Book Offers</h1>
+	  <table class="table">
+      <thead>
+          <tr>
+          <th>#</th>
+          <th>BookOffered</th>
+          <th>Message</th>
+          <th></th>
+          </tr>
+      </thead>
+      <tbody>
+          <?php 
+              echo other_populate_table();
+          ?>
+      </tbody>
+     </table>
     </div>
   </div>
 </div>

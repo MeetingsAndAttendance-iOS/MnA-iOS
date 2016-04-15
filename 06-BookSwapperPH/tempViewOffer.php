@@ -155,9 +155,7 @@
 								foreach($books as $book)
 								{
 									?>
-
-									
-										
+				
 										<input type="hidden" class = "no-border-btn btn-block" name="tempID" value="<?php echo $book->bookID; ?>">
 										<input type="button" class = "no-border-btn btn-block btn-info" name="submit" value="<?php echo $book->bookName; ?>">
 										
@@ -171,7 +169,7 @@
 			</div>
 
 			<div style = "float: left; text-align: left; width: 50%">
-				<form action="tempViewOrders.php" method="post">
+				<form action="tempViewOffers.php" method="post">
 					<input type="submit" class = "btn btn-warning" value="Back">
 				</form>
 			</div>

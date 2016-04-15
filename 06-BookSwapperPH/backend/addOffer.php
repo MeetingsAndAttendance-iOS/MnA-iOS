@@ -4,7 +4,7 @@
 	{
 		$DBH = new PDO("mysql:host=localhost;dbname=bookswapperph", "root", "");
 		
-		$data = array('id' => $_SESSION['id'], 'book' => $_SESSION['bookID']);
+		$data = array('id' => $_POST['id'], 'book' => $_POST['bookID']);
 		$STH = $DBH->prepare("INSERT INTO trade (userID, bookID) VALUES (:id, :book)");
 
 		$STH->execute($data);

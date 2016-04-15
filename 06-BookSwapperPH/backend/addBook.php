@@ -11,10 +11,11 @@
 		$genre = $_POST['genre'];
 		$condition = $_POST['condition'];
 		$comment = $_POST['comment'];
+		$availability = 1;
 		
-		$data = array('name' => $name, 'want' => $want, 'author' => $author, 'type' => $type, 'genre' => $genre, 'condition' => $condition, 'comment' => $comment);
-		$STH = $DBH->prepare("INSERT INTO books (bookName, bookWant, bookAuthor, type, genre, bookCondition, addedComments) VALUES (:name, :want, :author, :type, :genre, :condition, :comment )");
-
+		$data = array('name' => $name, 'want' => $want, 'author' => $author, 'type' => $type, 'genre' => $genre, 'condition' => $condition, 'comment' => $comment, 'availability' => $availability);
+		$STH = $DBH->prepare("INSERT INTO books (bookName, bookWant, bookAuthor, type, genre, bookCondition, addedComments, availability) VALUES (:name, :want, :author, :type, :genre, :condition, :comment, :availability)");
+		
 		$STH->execute($data);
 
 		$row = $DBH->lastInsertId();

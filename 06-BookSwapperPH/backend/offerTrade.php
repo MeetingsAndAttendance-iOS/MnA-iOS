@@ -6,9 +6,15 @@
 		
 		$data = array('id' => $_SESSION['id'], 'bookToOffer' => $_POST['bookToOffer'], 'message' => $_POST['message']);
 		
-		 $STH = $DBH->prepare("INSERT INTO offers (userID, offerName, message) VALUES (:id, :bookToOffer, :message)");
+		$STH = $DBH->prepare("INSERT INTO offers (userID, offerName, message) VALUES (:id, :bookToOffer, :message)");
         $STH->execute($data);
         $row = $DBH->lastInsertId();
+		
+		$data = array('id' => $_SESSION['tempID'], 'bookToOffer' => $_POST['bookToOffer'], 'message' => $_POST['message']);
+		
+		$STH = $DBH->prepare("INSERT INTO offertrade (userID, offerTradeName, tmessage) VALUES (:id, :bookToOffer, :message)");
+        $STH->execute($data);
+		
 		
 		$data = array('id' => $SESSION['id']);
 		

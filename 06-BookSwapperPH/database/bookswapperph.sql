@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 14, 2016 at 06:34 AM
+-- Generation Time: Apr 15, 2016 at 07:06 AM
 -- Server version: 5.6.25
 -- PHP Version: 5.6.11
 
@@ -35,18 +35,20 @@ CREATE TABLE IF NOT EXISTS `books` (
   `type` int(11) NOT NULL,
   `genre` int(11) NOT NULL,
   `bookCondition` varchar(100) NOT NULL,
-  `addedComments` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+  `addedComments` text NOT NULL,
+  `availability` tinyint(1) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `books`
 --
 
-INSERT INTO `books` (`bookID`, `bookName`, `restriction`, `bookWant`, `bookAuthor`, `type`, `genre`, `bookCondition`, `addedComments`) VALUES
-(2, 'hp1', 0, '', 'jk rowling', 1, 1, '', ''),
-(4, 'hp1', 0, '', 'jk rowling', 1, 2, '', ''),
-(5, 'hp1', 0, '', 'jk rowling', 1, 2, '', ''),
-(6, 'hp1', 0, '', 'jk rowling', 1, 2, 'new', ':D');
+INSERT INTO `books` (`bookID`, `bookName`, `restriction`, `bookWant`, `bookAuthor`, `type`, `genre`, `bookCondition`, `addedComments`, `availability`) VALUES
+(2, 'hp1', 0, '', 'jk rowling', 1, 1, '', '', 1),
+(4, 'hp1', 0, '', 'jk rowling', 1, 2, '', '', 1),
+(5, 'hp1', 0, '', 'jk rowling', 1, 2, '', '', 1),
+(6, 'hp1', 0, '', 'jk rowling', 1, 2, 'new', ':D', 1),
+(8, 'asdasd', 0, 'qwe', 'asd', 1, 1, 'qwe', '', 1);
 
 -- --------------------------------------------------------
 
@@ -110,7 +112,7 @@ CREATE TABLE IF NOT EXISTS `library` (
   `libraryID` int(11) NOT NULL,
   `userID` int(11) NOT NULL,
   `bookID` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `library`
@@ -123,7 +125,9 @@ INSERT INTO `library` (`libraryID`, `userID`, `bookID`) VALUES
 (5, 4, 3),
 (6, 5, 4),
 (7, 6, 5),
-(8, 4, 6);
+(8, 4, 6),
+(12, 1, 7),
+(13, 1, 8);
 
 -- --------------------------------------------------------
 
@@ -133,8 +137,8 @@ INSERT INTO `library` (`libraryID`, `userID`, `bookID`) VALUES
 
 CREATE TABLE IF NOT EXISTS `offerbooks` (
   `offerBookID` int(11) NOT NULL,
-  `bookID` int(11) NOT NULL,
-  `offerID` int(11) NOT NULL
+  `offerID` int(11) NOT NULL,
+  `bookID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -147,6 +151,19 @@ CREATE TABLE IF NOT EXISTS `offers` (
   `offerID` int(11) NOT NULL,
   `userID` int(11) NOT NULL,
   `offerName` varchar(100) NOT NULL,
+  `tmessage` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `offertrade`
+--
+
+CREATE TABLE IF NOT EXISTS `offertrade` (
+  `offerTradeID` int(11) NOT NULL,
+  `userID` int(11) NOT NULL,
+  `offerTradeName` varchar(100) NOT NULL,
   `message` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -251,6 +268,12 @@ ALTER TABLE `offers`
   ADD PRIMARY KEY (`offerID`);
 
 --
+-- Indexes for table `offertrade`
+--
+ALTER TABLE `offertrade`
+  ADD PRIMARY KEY (`offerTradeID`);
+
+--
 -- Indexes for table `trade`
 --
 ALTER TABLE `trade`
@@ -276,7 +299,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `books`
 --
 ALTER TABLE `books`
-  MODIFY `bookID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `bookID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `genres`
 --
@@ -286,7 +309,7 @@ ALTER TABLE `genres`
 -- AUTO_INCREMENT for table `library`
 --
 ALTER TABLE `library`
-  MODIFY `libraryID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+  MODIFY `libraryID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `offerbooks`
 --
@@ -297,6 +320,11 @@ ALTER TABLE `offerbooks`
 --
 ALTER TABLE `offers`
   MODIFY `offerID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `offertrade`
+--
+ALTER TABLE `offertrade`
+  MODIFY `offerTradeID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `trade`
 --
