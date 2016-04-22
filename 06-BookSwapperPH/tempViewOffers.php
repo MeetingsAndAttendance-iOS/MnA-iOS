@@ -109,12 +109,14 @@
           <th>#</th>
           <th>BookOffered</th>
           <th>Message</th>
+		  <th>Trading to</th>
+		  <th>Status</th>
           <th></th>
           </tr>
       </thead>
       <tbody>
           <?php 
-              echo populate_table();
+              echo other_populate_table();
           ?>
       </tbody>
      </table>
@@ -125,12 +127,14 @@
           <th>#</th>
           <th>BookOffered</th>
           <th>Message</th>
+          <th>Trading from</th>
+		  <th>Status</th>
           <th></th>
           </tr>
       </thead>
       <tbody>
           <?php 
-              echo other_populate_table();
+              echo populate_table();
           ?>
       </tbody>
      </table>

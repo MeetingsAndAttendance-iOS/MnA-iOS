@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 22, 2016 at 04:46 AM
+-- Generation Time: Apr 23, 2016 at 12:39 AM
 -- Server version: 5.6.25
 -- PHP Version: 5.6.11
 
@@ -139,7 +139,7 @@ CREATE TABLE IF NOT EXISTS `offerbooks` (
   `offerBookID` int(11) NOT NULL,
   `offerID` int(11) NOT NULL,
   `bookID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -149,17 +149,19 @@ CREATE TABLE IF NOT EXISTS `offerbooks` (
 
 CREATE TABLE IF NOT EXISTS `offers` (
   `offerID` int(11) NOT NULL,
-  `userID` int(11) NOT NULL,
+  `userTradingToID` int(11) NOT NULL,
+  `userTradingFromID` int(11) NOT NULL,
   `offerName` varchar(100) NOT NULL,
   `message` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `offers`
 --
 
-INSERT INTO `offers` (`offerID`, `userID`, `offerName`, `message`) VALUES
-(3, 7, 'hunger games', 'hi');
+INSERT INTO `offers` (`offerID`, `userTradingToID`, `userTradingFromID`, `offerName`, `message`) VALUES
+(4, 3, 7, 'hunger games', 'hi'),
+(18, 6, 10, 'GoT', '');
 
 -- --------------------------------------------------------
 
@@ -169,17 +171,19 @@ INSERT INTO `offers` (`offerID`, `userID`, `offerName`, `message`) VALUES
 
 CREATE TABLE IF NOT EXISTS `offertrade` (
   `offerTradeID` int(11) NOT NULL,
-  `userID` int(11) NOT NULL,
+  `userTradingFromID` int(11) NOT NULL,
+  `userTradingToID` int(11) NOT NULL,
   `offerTradeName` varchar(100) NOT NULL,
   `tmessage` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `offertrade`
 --
 
-INSERT INTO `offertrade` (`offerTradeID`, `userID`, `offerTradeName`, `tmessage`) VALUES
-(2, 3, 'hunger games', 'hi');
+INSERT INTO `offertrade` (`offerTradeID`, `userTradingFromID`, `userTradingToID`, `offerTradeName`, `tmessage`) VALUES
+(3, 7, 3, 'hunger games', 'hi'),
+(17, 10, 6, 'GoT', '');
 
 -- --------------------------------------------------------
 
@@ -191,7 +195,7 @@ CREATE TABLE IF NOT EXISTS `trade` (
   `tradeID` int(11) NOT NULL,
   `userID` int(11) NOT NULL,
   `bookID` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -328,22 +332,22 @@ ALTER TABLE `library`
 -- AUTO_INCREMENT for table `offerbooks`
 --
 ALTER TABLE `offerbooks`
-  MODIFY `offerBookID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `offerBookID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `offers`
 --
 ALTER TABLE `offers`
-  MODIFY `offerID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `offerID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `offertrade`
 --
 ALTER TABLE `offertrade`
-  MODIFY `offerTradeID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `offerTradeID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `trade`
 --
 ALTER TABLE `trade`
-  MODIFY `tradeID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `tradeID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `types`
 --

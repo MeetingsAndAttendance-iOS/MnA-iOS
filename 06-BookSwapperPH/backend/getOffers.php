@@ -8,6 +8,7 @@ function populate_table()
 	
 	foreach ($users as $user) 
 	{
+		
 		$table .= '<tr>';
 
 		$table .= '<td>';	
@@ -24,12 +25,17 @@ function populate_table()
 		$table .= '<td>';	
 		$table .= $user->message;
 		$table .= '</td>';
-
+		
+		$table .= '<td>';	
+		$table .= $user->userName;
+		$table .= '</td>';
+		
 		$table .= '</td>';
 
 		$table .= '</tr>';
+		
 	}
-	
+		
 	return $table;
 }
 
@@ -40,7 +46,7 @@ function get_offers()
 		$DBH = new PDO("mysql:host=localhost;dbname=bookswapperph","root","");
 		
 		$data = array("id" => $_SESSION['id']);
-		$STH = $DBH->prepare("SELECT * FROM offers WHERE userID = :id");
+		$STH = $DBH->prepare("SELECT * FROM offers JOIN users WHERE ((users.userID = offers.userTradingFromID) AND (offers.userTradingToID = :id))");
 		$STH->execute($data);
 		$users = $STH->fetchALL(PDO::FETCH_OBJ);
 		
@@ -61,7 +67,7 @@ function get_other_offers(){
 		$DBH = new PDO("mysql:host=localhost;dbname=bookswapperph", "root", "");
 		
 		$data = array("id" => $_SESSION['id']);
-		$STH = $DBH->prepare("SELECT * FROM offertrade WHERE userID = :id");
+		$STH = $DBH->prepare("SELECT * FROM offertrade JOIN users WHERE ((users.userID = offertrade.userTradingToID) AND (offertrade.userTradingFromID = :id))");
 		$STH->execute($data);
 		$users = $STH->fetchALL(PDO::FETCH_OBJ);
 		
@@ -97,6 +103,11 @@ function other_populate_table()
 		$table .= '<td>';	
 		$table .= $user->tmessage;
 		$table .= '</td>';
+		
+		$table .= '<td>';	
+		$table .= $user->userName;
+		$table .= '</td>';
+		
 
 		$table .= '</td>';
 
