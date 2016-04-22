@@ -22,7 +22,7 @@ function populate_table()
 		$table .= '</td>';
 
 		$table .= '<td>';	
-		$table .= $user->tmessage;
+		$table .= $user->message;
 		$table .= '</td>';
 
 		$table .= '</td>';
@@ -85,17 +85,17 @@ function other_populate_table()
 
 		$table .= '<td>';	
 		$table .= "<form action = 'tempViewOffer.php' method = 'post'>
-						<input type='hidden' name= 'offerID' value=$user->offerID>
-						<input type='submit' class = 'btn btn-link' name='submit' value=$user->offerID>
+						<input type='hidden' name= 'offerID' value=$user->offerTradeID>
+						<input type='submit' class = 'btn btn-link' name='submit' value=$user->offerTradeID>
 						</form> ";
 		$table .= "</td>";
 
 		$table .= '<td>';	
-		$table .= $user->offerName;
+		$table .= $user->offerTradeName;
 		$table .= '</td>';
 
 		$table .= '<td>';	
-		$table .= $user->message;
+		$table .= $user->tmessage;
 		$table .= '</td>';
 
 		$table .= '</td>';

@@ -7,7 +7,7 @@
 		$_SESSION['tempID'] = $_POST['tempID'];
 	}
 ?>
- 
+
 <html>
 <head>
     <meta charset="utf-8">
@@ -196,11 +196,24 @@
     	<div class = "row">
     		<div class = "col-md-12">
 				<?php
-					
 					$library = getLibrary();
-					// $user = getUser();
-					if(isset($_SESSION['isLoggedIn'])){
+					if((empty($library)) && (isset($_SESSION['isLoggedIn']))){
 						
+					?>
+						<div class ="col-md-4">
+							<div class = "thumbnail">
+								<div class = "caption">
+									<li><a href="tempAddBook.php">Add Book</a></li>
+								</div>
+							</div>
+						</div>							
+					<?php
+						
+					}
+					$library = getLibrary();
+					$user = getUser();
+					if((!empty($library)) && (isset($_SESSION['isLoggedIn']))){
+						if(($user->userID) == ($_SESSION['tempID'])){
 					?>
 							<div class ="col-md-4">
 								<div class = "thumbnail">
@@ -210,7 +223,7 @@
 								</div>
 							</div>	
 					<?php
-					}
+						}
 						foreach($library as $temp)
 						{
 							?>
@@ -231,7 +244,7 @@
 							</div>
 							<?php
 						}
-						
+					}	
 					?>
 
 			</div>

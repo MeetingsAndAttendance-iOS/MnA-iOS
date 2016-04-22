@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 15, 2016 at 07:06 AM
+-- Generation Time: Apr 22, 2016 at 04:46 AM
 -- Server version: 5.6.25
 -- PHP Version: 5.6.11
 
@@ -151,8 +151,15 @@ CREATE TABLE IF NOT EXISTS `offers` (
   `offerID` int(11) NOT NULL,
   `userID` int(11) NOT NULL,
   `offerName` varchar(100) NOT NULL,
-  `tmessage` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `message` text NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `offers`
+--
+
+INSERT INTO `offers` (`offerID`, `userID`, `offerName`, `message`) VALUES
+(3, 7, 'hunger games', 'hi');
 
 -- --------------------------------------------------------
 
@@ -164,8 +171,15 @@ CREATE TABLE IF NOT EXISTS `offertrade` (
   `offerTradeID` int(11) NOT NULL,
   `userID` int(11) NOT NULL,
   `offerTradeName` varchar(100) NOT NULL,
-  `message` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `tmessage` text NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `offertrade`
+--
+
+INSERT INTO `offertrade` (`offerTradeID`, `userID`, `offerTradeName`, `tmessage`) VALUES
+(2, 3, 'hunger games', 'hi');
 
 -- --------------------------------------------------------
 
@@ -177,7 +191,7 @@ CREATE TABLE IF NOT EXISTS `trade` (
   `tradeID` int(11) NOT NULL,
   `userID` int(11) NOT NULL,
   `bookID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -319,17 +333,17 @@ ALTER TABLE `offerbooks`
 -- AUTO_INCREMENT for table `offers`
 --
 ALTER TABLE `offers`
-  MODIFY `offerID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `offerID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `offertrade`
 --
 ALTER TABLE `offertrade`
-  MODIFY `offerTradeID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `offerTradeID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `trade`
 --
 ALTER TABLE `trade`
-  MODIFY `tradeID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `tradeID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `types`
 --
