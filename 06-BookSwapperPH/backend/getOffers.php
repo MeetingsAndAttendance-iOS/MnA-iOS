@@ -12,7 +12,7 @@ function populate_table()
 		$table .= '<tr>';
 
 		$table .= '<td>';	
-		$table .= "<form action = 'tempViewOffer.php' method = 'post'>
+		$table .= "<form action = 'tempViewOfferBookOffers.php' method = 'post'>
 						<input type='hidden' name= 'offerID' value=$user->offerID>
 						<input type='submit' class = 'btn btn-link' name='submit' value=$user->offerID>
 						</form> ";
@@ -90,7 +90,7 @@ function other_populate_table()
 		$table .= '<tr>';
 
 		$table .= '<td>';	
-		$table .= "<form action = 'tempViewOffer.php' method = 'post'>
+		$table .= "<form action = 'tempViewOfferMyTransactions.php' method = 'post'>
 						<input type='hidden' name= 'offerID' value=$user->offerTradeID>
 						<input type='submit' class = 'btn btn-link' name='submit' value=$user->offerTradeID>
 						</form> ";
