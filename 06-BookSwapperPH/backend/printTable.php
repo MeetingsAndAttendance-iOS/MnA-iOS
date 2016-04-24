@@ -73,13 +73,6 @@ function draw_calendar()
 		$calendar .= "<h5> $temp->bookWant</h5>";
 		$calendar .= "</td>";
 
-		#$calendar .= "<td class='calendar-day'>";
-		#$calendar .= "<form action='backend/deleteCart.php' method='post'>";
-		#$calendar .= "<input type='hidden' name='id' value='$temp->bookID'>";
-		#$calendar .= "<h5><input type='submit' class = 'btn' value='Delete'></h5>";
-		#$calendar .= "</form>";
-		#$calendar .= "</td>";
-
 		$calendar .= "</tr>";
 
 	}

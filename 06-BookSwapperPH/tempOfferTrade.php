@@ -163,7 +163,7 @@
 						<input class = "pull-right btn btn-success" type="submit" value="Offer">
 					</form>
 
-					<form action="index.php" method="post">
+					<form action="backend/deleteTrade.php" method="post">
 						<input class = "pull-left btn" type="submit" value="Back">
 					</form>
 				</div>

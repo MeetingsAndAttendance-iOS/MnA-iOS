@@ -1,5 +1,5 @@
 <?php
-
+include 'getBook.php';
 function populate_table()
 {
 	$table="";

@@ -9,7 +9,7 @@
         $STH->execute($data);
 
         $DBH = null;
-        header("Location: ../tempOfferTrade.php");
+        header("Location: ../tempViewBook.php");
     }
     catch(PDOException $e)
     {
