@@ -2,9 +2,9 @@
 	session_start();
 	include 'backend/getOffers.php';
 	include 'backend/getUser.php';
-	if(isset($_SESSION['offerID']))
+	if(isset($_SESSION['offerTradeID']))
     {
-        unset($_SESSION['offerID']);
+        unset($_SESSION['offerTradeID']);
     }
 ?>
 
@@ -146,14 +146,15 @@
 				<div class = "col-md-12">
 					<div class = "panel panel-warning">
 						<div class = "panel-heading">
-							<center><h2>Books Offered</h2></center>
+							<center><h2>Trading For</h2></center>
 						</div>
 						<div class = "panel-body">
 
 							<?php
-								$books = get_offerbooks();
+								$books = get_my_offerbooks();
 								foreach($books as $book)
 								{
+									
 									?>
 				
 										<input type="hidden" class = "no-border-btn btn-block" name="tempID" value="<?php echo $book->bookID; ?>">
@@ -168,6 +169,12 @@
 				</div>
 			</div>
 
+			<div style = "float: right; text-align: right; width: 50%">
+				<form action="index.php" method="post">
+					<input type="submit" class = "btn btn-warning" value="Delete Offer">
+				</form>
+			</div>
+			
 			<div style = "float: left; text-align: left; width: 50%">
 				<form action="tempViewOffers.php" method="post">
 					<input type="submit" class = "btn btn-warning" value="Back">

@@ -121,8 +121,8 @@ function get_offerbooks(){
 	try{
 		$DBH = new PDO("mysql:host=localhost;dbname=bookswapperph", "root", "");
 
-		$data = array("id" => $_POST['offerID']);
-		$STH = $DBH->prepare("SELECT * FROM offerbooks JOIN books on (offerbooks.bookID = books.bookID) WHERE offerID = :id");
+		$data = array("id" => $_SESSION['id']);
+		$STH = $DBH->prepare("SELECT * FROM offerbooks JOIN books on (offerbooks.bookID = books.bookID) WHERE userTradingToID = :id");
 		$STH -> execute($data);
 		$offers = $STH->fetchAll(PDO::FETCH_OBJ);
 
@@ -130,6 +130,23 @@ function get_offerbooks(){
 		return $offers;
 	}
 
+	catch(PDOException $e){
+		echo $e->getMessage();
+	}
+}
+
+function get_my_offerbooks(){
+	try{
+		$DBH = new PDO("mysql:host=localhost;dbname=bookswapperph", "root", "");
+		
+		$data = array("id" => $_SESSION['id']);
+		$STH = $DBH->prepare("SELECT * FROM offerbooks JOIN books on (offerbooks.bookID = books.bookID) WHERE userTradingFromID = :id");
+		$STH -> execute($data);
+		$myOffers = $STH->fetchALL(PDO::FETCH_OBJ);
+		
+		$DBH = null;
+		return $myOffers;
+	}
 	catch(PDOException $e){
 		echo $e->getMessage();
 	}

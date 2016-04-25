@@ -226,23 +226,26 @@
 						}
 						foreach($library as $temp)
 						{
-							?>
+							if($temp->availability == 1)
+							{	
+								?>
 							
-							<div class ="col-md-4">
-								<div class = "thumbnail">
-									<div class = "caption">
-										<h4 class = "pull-right"><?php echo $temp->bookWant; ?></h4>
+								<div class ="col-md-4">
+									<div class = "thumbnail">
+										<div class = "caption">
+											<h4 class = "pull-right"><?php echo $temp->bookWant; ?></h4>
 
-										<form name = "viewBookForm" action="tempViewBook.php" method="post">
-											<input type="hidden" name="bookID" value="<?php echo $temp->bookID; ?>">
-											<div class = "pull-left"><button type="submit" class="btn btn-link btn-md"><?php echo $temp->bookName; ?></button></div>
-										</form>
+											<form name = "viewBookForm" action="tempViewBook.php" method="post">
+												<input type="hidden" name="bookID" value="<?php echo $temp->bookID; ?>">
+												<div class = "pull-left"><button type="submit" class="btn btn-link btn-md"><?php echo $temp->bookName; ?></button></div>
+											</form>
 
-										<p><br> <?php echo $temp->bookAuthor;?> </p>
+											<p><br> <?php echo $temp->bookAuthor;?> </p>
+										</div>
 									</div>
 								</div>
-							</div>
-							<?php
+								<?php
+							}
 						}
 					}	
 					?>

@@ -146,7 +146,7 @@
 				<div class = "col-md-12">
 					<div class = "panel panel-warning">
 						<div class = "panel-heading">
-							<center><h2>Books Offered</h2></center>
+							<center><h2>Trading To</h2></center>
 						</div>
 						<div class = "panel-body">
 
@@ -167,13 +167,21 @@
 					</div>
 				</div>
 			</div>
-
-			<div style = "float: left; text-align: left; width: 50%">
-				<form action="tempViewOffers.php" method="post">
-					<input type="submit" class = "btn btn-warning" value="Back">
+			
+			<div style = "text-align: center;">
+				<form action="backend/offerAccept.php" method="post">
+					<input type="submit" class = "btn btn-warning" value="Accept">
 				</form>
+	
+				<form action="tempViewOffers.php" method="post">
+					<input type="submit" class = "btn btn-warning" value="Hold">
+				</form>			
+				
+				<form action="backend/offerDecline.php" method="post">
+					<input type="submit" class = "btn btn-warning" value="Decline">
+				</form>			
 			</div>
-
+					
 		</div>
 	</div>
 

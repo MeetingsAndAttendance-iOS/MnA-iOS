@@ -22,14 +22,6 @@ function drawUsers()
 		$table .= "</form>";
 		$table .= "</td>";
 
-		$table .= '<td>';	
-		$table .= $user->contactNo;
-		$table .= '</td>';
-
-		$table .= '<td>';	
-		$table .= $user->email;
-		$table .= '</td>';
-
 		$table .= '</td>';
 
 		$table .= '</tr>';

@@ -6,6 +6,10 @@
     {
         unset($_SESSION['offerID']);
     }
+	if(isset($_SESSION['offerTradeID']))
+    {
+        unset($_SESSION['offerTradeID']);
+    }
     if(isset($_SESSION['displayName']))
     {
         unset($_SESSION['displayName']);
@@ -109,9 +113,9 @@
           <th>#</th>
           <th>BookOffered</th>
           <th>Message</th>
-		  <th>Trading to</th>
-		  <th>Status</th>
-          <th></th>
+		  <th>User</th>		 
+		 <!-- <th>Status</th> -->
+		 <th></th>
           </tr>
       </thead>
       <tbody>
@@ -127,8 +131,8 @@
           <th>#</th>
           <th>BookOffered</th>
           <th>Message</th>
-          <th>Trading from</th>
-		  <th>Status</th>
+          <th>User</th>
+		 <!-- <th>Status</th> -->
           <th></th>
           </tr>
       </thead>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 24, 2016 at 09:38 PM
+-- Generation Time: Apr 25, 2016 at 11:35 PM
 -- Server version: 5.6.25
 -- PHP Version: 5.6.11
 
@@ -139,15 +139,18 @@ CREATE TABLE IF NOT EXISTS `offerbooks` (
   `offerBookID` int(11) NOT NULL,
   `offerID` int(11) NOT NULL,
   `bookID` int(11) NOT NULL,
-  `userTradingFromID` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+  `userTradingFromID` int(11) NOT NULL,
+  `offerTradeID` int(11) NOT NULL,
+  `userTradingToID` int(11) NOT NULL,
+  `status` tinyint(1) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `offerbooks`
 --
 
-INSERT INTO `offerbooks` (`offerBookID`, `offerID`, `bookID`, `userTradingFromID`) VALUES
-(18, 27, 2, 7);
+INSERT INTO `offerbooks` (`offerBookID`, `offerID`, `bookID`, `userTradingFromID`, `offerTradeID`, `userTradingToID`, `status`) VALUES
+(19, 29, 2, 7, 28, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -161,14 +164,14 @@ CREATE TABLE IF NOT EXISTS `offers` (
   `userTradingFromID` int(11) NOT NULL,
   `offerName` varchar(100) NOT NULL,
   `message` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `offers`
 --
 
 INSERT INTO `offers` (`offerID`, `userTradingToID`, `userTradingFromID`, `offerName`, `message`) VALUES
-(27, 3, 7, 'hunger games', 'asdasd');
+(28, 3, 7, 'hunger games', 'hi');
 
 -- --------------------------------------------------------
 
@@ -182,14 +185,14 @@ CREATE TABLE IF NOT EXISTS `offertrade` (
   `userTradingToID` int(11) NOT NULL,
   `offerTradeName` varchar(100) NOT NULL,
   `tmessage` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `offertrade`
 --
 
 INSERT INTO `offertrade` (`offerTradeID`, `userTradingFromID`, `userTradingToID`, `offerTradeName`, `tmessage`) VALUES
-(26, 7, 3, 'hunger games', 'asdasd');
+(27, 7, 3, 'hunger games', 'hi');
 
 -- --------------------------------------------------------
 
@@ -201,7 +204,7 @@ CREATE TABLE IF NOT EXISTS `trade` (
   `tradeID` int(11) NOT NULL,
   `userID` int(11) NOT NULL,
   `bookID` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -246,7 +249,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`userID`, `userName`, `password`, `displayName`, `location`, `contactNo`, `email`, `isAdmin`, `notify`) VALUES
 (1, 'pater', '$2y$10$ZB8KgceBE1ZM8VWVqLuMS.JpDHZsbihQoO8HXP.7yoN14yJH2Pspy', 'pater', '', 0, 'asd', 0, 0),
-(2, 'asd', '$2y$10$qdEwQPRuOB7N0XdIasicWO.Yp.M8JnnlKC7Mx7/FY4CQR7LTielfe', 'asd', '', 0, 'asd', 0, 0),
+(2, 'admin', '$2y$10$qdEwQPRuOB7N0XdIasicWO.Yp.M8JnnlKC7Mx7/FY4CQR7LTielfe', 'admin', '', 0, 'asd', 1, 0),
 (3, 't1', '$2y$10$ufccZBKkrZF5BrjMm9TWZ..tOhMGa1rG.4A49xeZuDDbWm4QMexa.', 't1', '', 0, 't1@y.com', 0, 0),
 (4, 't2', '$2y$10$YydCk3aBaAYU3lMjEWA3i.5HxPhmV2eHbCZND9XvG1Arch3tVCnoC', 't2', '', 0, 't2@y.com', 0, 0),
 (5, 't3', '$2y$10$ZekQUY0fwUnvctE4FwBhfO5PVVlS552zRIodU3Oln8jklzoQjJz3.', 't3', '', 0, 't3@y.com', 0, 0),
@@ -338,22 +341,22 @@ ALTER TABLE `library`
 -- AUTO_INCREMENT for table `offerbooks`
 --
 ALTER TABLE `offerbooks`
-  MODIFY `offerBookID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
+  MODIFY `offerBookID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=40;
 --
 -- AUTO_INCREMENT for table `offers`
 --
 ALTER TABLE `offers`
-  MODIFY `offerID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=28;
+  MODIFY `offerID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=30;
 --
 -- AUTO_INCREMENT for table `offertrade`
 --
 ALTER TABLE `offertrade`
-  MODIFY `offerTradeID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
+  MODIFY `offerTradeID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=29;
 --
 -- AUTO_INCREMENT for table `trade`
 --
 ALTER TABLE `trade`
-  MODIFY `tradeID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
+  MODIFY `tradeID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `types`
 --

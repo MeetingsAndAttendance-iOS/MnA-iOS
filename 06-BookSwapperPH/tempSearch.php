@@ -194,14 +194,12 @@
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
 			<div class="boxview">
-				<h1>Users</h1>
+			<!--<h1>Users</h1>
 				<div class="table-responsive">
 				  <table class="table">
 			      <thead>
 			          <tr>
 			          <th>Name</th>
-			          <th>Contact No</th>
-			          <th>Email</th>
 			          </tr>
 			      </thead>
 			      <tbody>
@@ -210,8 +208,8 @@
 			          ?>
 			      </tbody>
 			      </table>
-				</div>
-
+				</div> -->
+			
 				<h1>Books</h1>
 				<div class="table-responsive">
 				  <table class="table">

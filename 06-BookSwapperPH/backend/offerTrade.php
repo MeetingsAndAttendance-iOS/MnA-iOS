@@ -8,17 +8,17 @@
 		$data = array('id1' => $_SESSION['tempID'], 'id2' => $_SESSION['id'], 'bookToOffer' => $_POST['bookToOffer'], 'message' => $_POST['message']);
 		$STH = $DBH->prepare("INSERT INTO offers (userTradingToID, userTradingFromID, offerName, message) VALUES (:id1, :id2, :bookToOffer, :message)");		
         $STH->execute($data);
-		$row = $DBH->lastInsertId();
+		$row1 = $DBH->lastInsertId();
 #<<<<<<< HEAD
 		
 		$data = array('id1' => $_SESSION['id'], 'id2' => $_SESSION['tempID'], 'bookToOffer' => $_POST['bookToOffer'], 'message' => $_POST['message']);		
 		$STH = $DBH->prepare("INSERT INTO offertrade (userTradingFromID, userTradingToID, offerTradeName, tmessage) VALUES (:id1, :id2, :bookToOffer, :message)");
 		$STH->execute($data);
-		
+		$row2 = $DBH->lastInsertId();
 #>>>>>>> 430fe3c1e87fd309c54236167978d0f45118347c
 		
-		$data = array('row' => $row, 'id' => $_SESSION['id']);
-		$STH = $DBH->prepare("UPDATE offerbooks SET offerID = :row WHERE userTradingFromID = :id");
+		$data = array('row1' => $row1, 'id' => $_SESSION['id'], 'row2' => $row2);
+		$STH = $DBH->prepare("UPDATE offerbooks SET offerID = :row1, offerTradeID = :row2 WHERE userTradingFromID = :id");
 		$STH->execute($data);
 		
 		#$data = array('id' => $_SESSION['id']);

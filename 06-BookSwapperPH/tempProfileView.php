@@ -201,38 +201,6 @@
               </div>
             </div>
 
-            <div class="panel panel-primary">
-              <div class="panel-heading">
-                <h3 class="panel-title">Location</h3>
-              </div>
-              <div class="panel-body">
-                <?php
-                    echo $user->location;
-                ?>
-              </div>
-            </div>
-
-            <div class="panel panel-primary">
-              <div class="panel-heading">
-                <h3 class="panel-title">Contact Number</h3>
-              </div>
-              <div class="panel-body">
-                <?php
-                    echo $user->contactNo;
-                ?>
-              </div>
-            </div>
-
-            <div class="panel panel-primary">
-              <div class="panel-heading">
-                <h3 class="panel-title">Email Address</h3>
-              </div>
-              <div class="panel-body">
-                <?php
-                    echo $user->email;
-                ?>
-              </div>
-            </div>
 
             <div class="row">
               <div class="col-md-4">
