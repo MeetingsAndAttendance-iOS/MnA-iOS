@@ -100,5 +100,6 @@ function draw_calendar()
 	/* all done, return result */
 	return $calendar;
 }
+
 ?>
 

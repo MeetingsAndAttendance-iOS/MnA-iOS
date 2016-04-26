@@ -1,15 +1,7 @@
 <?php
     session_start();
     include 'backend/getOffers.php';
-    include 'backend/getUser.php';
-	if(isset($_SESSION['offerID']))
-    {
-        unset($_SESSION['offerID']);
-    }
-	if(isset($_SESSION['offerTradeID']))
-    {
-        unset($_SESSION['offerTradeID']);
-    }
+    include 'backend/getUser.php';	
     if(isset($_SESSION['displayName']))
     {
         unset($_SESSION['displayName']);
@@ -17,8 +9,14 @@
         unset($_SESSION['contactNo']);
         unset($_SESSION['email']);
     }
-	
-	
+	if(isset($_POST['offerTradeID']))
+	{
+		$_SESSION['offerTradeID'] = $_POST['offerTradeID'];
+	}
+	if(isset($_POST['offerID']))
+	{
+		$_SESSION['offerID'] = $_POST['offerID'];
+	}
 ?>
 
 <!DOCTYPE html>
@@ -111,7 +109,7 @@
       <thead>
           <tr>
           <th>#</th>
-          <th>BookOffered</th>
+          <th>MyBookOffers</th>
           <th>Message</th>
 		  <th>User</th>		 
 		 <!-- <th>Status</th> -->

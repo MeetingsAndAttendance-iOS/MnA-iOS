@@ -1,14 +1,12 @@
 <?php
     session_start();
     include 'backend/getUser.php';
-
-    if(isset($_POST['tempID']))
+	if(isset($_SESSION['displayName']))
     {
-        $_SESSION['tempID'] = $_POST['tempID'];
-    }
-    elseif(!isset($_SESSION['tempID']))
-    {
-        header('Location: tempViewUsers.php');
+        unset($_SESSION['displayName']);
+        unset($_SESSION['location']);
+        unset($_SESSION['contactNo']);
+        unset($_SESSION['email']);
     }
 ?>
 <!DOCTYPE html>
@@ -181,7 +179,7 @@
     </nav>
 
   <?php
-      $user = getUser($_SESSION['tempID']);
+      $user = getUser($_SESSION['id']);
   ?>
 
 <div class="container text-center">

@@ -2,10 +2,15 @@
 	session_start();
 	include 'backend/getOffers.php';
 	include 'backend/getUser.php';
-	if(isset($_SESSION['offerTradeID']))
-    {
-        unset($_SESSION['offerTradeID']);
-    }
+	if(isset($_POST['offerTradeID']))
+	{
+		$_SESSION['offerTradeID'] = $_POST['offerTradeID'];
+	}
+	
+	if(isset($_POST['offerID']))
+	{
+		$_SESSION['offerID'] = $_POST['offerID'];
+	}
 ?>
 
 <html>
@@ -154,7 +159,8 @@
 								$books = get_my_offerbooks();
 								foreach($books as $book)
 								{
-									
+									if($book->status == 1)
+									{
 									?>
 				
 										<input type="hidden" class = "no-border-btn btn-block" name="tempID" value="<?php echo $book->bookID; ?>">
@@ -162,6 +168,21 @@
 										
 									
 									<?php
+									}
+									elseif($book->status == 2)
+									{
+									?>
+									
+									
+									<?php
+									}
+									elseif($book->status == 0)
+									{
+									?>
+									
+									
+									<?php
+									}
 								}
 							?>
 						</div>
@@ -170,7 +191,7 @@
 			</div>
 
 			<div style = "float: right; text-align: right; width: 50%">
-				<form action="index.php" method="post">
+				<form action="backend/deleteOffer.php" method="post">
 					<input type="submit" class = "btn btn-warning" value="Delete Offer">
 				</form>
 			</div>

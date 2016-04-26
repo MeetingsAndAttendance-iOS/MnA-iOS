@@ -2,10 +2,18 @@
 	session_start();
 	include 'backend/getOffers.php';
 	include 'backend/getUser.php';
-	if(isset($_SESSION['offerID']))
-    {
-        unset($_SESSION['offerID']);
-    }
+	if(isset($_POST['offerTradeID']))
+	{
+		$_SESSION['offerTradeID'] = $_POST['offerTradeID'];
+	}
+	if(isset($_POST['offerID']))
+	{
+		$_SESSION['offerID'] = $_POST['offerID'];
+	}
+	if(isset($_POST['offer_userID']))
+	{
+		$_SESSION['offer_userID'] = $_POST['offer_userID'];
+	}
 ?>
 
 <html>

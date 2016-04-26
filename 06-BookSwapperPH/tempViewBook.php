@@ -2,7 +2,6 @@
 	session_start();
 	include 'backend/getUser.php';
 	include 'backend/getBook.php';
-
 	if(isset($_POST['bookID']))
 	{
 		$_SESSION['bookID'] = $_POST['bookID'];

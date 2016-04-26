@@ -2,6 +2,10 @@
 	session_start();
 	include 'backend/printTable.php';
 	include 'backend/getUser.php';
+	if(isset($_POST['bookID']))
+	{
+		$_SESSION['bookID'] = $_POST['bookID'];
+	}
 ?>
 
 <html>
@@ -73,6 +77,7 @@
 							if(isset($_SESSION['isLoggedIn']))
 							{
 								$user = getUser();
+																
 						?>
 						
 						<li>
@@ -132,6 +137,8 @@
 						
 						<?php
 							}
+
+   	
 						?>
 
 	                </ul>
@@ -141,20 +148,23 @@
 	    </div>
         <!-- /.container-fluid -->
     </nav>
-
-    <div id = "userbody" style = "margin: auto; padding: 1px; width: 85%">
+	<div id = "userbody" style = "margin: auto; padding: 1px; width: 85%">
     	<div style = "color: #595959; margin-bottom: 15px; margin-top:40px; background-color: #f2f2f2; padding: 10px; padding-bottom: 45px">
 			
 	    	<div class = "row">
 	    		<div class = "col-md-12">
 					<?php
 						echo draw_calendar();
+						
 					?>
 
 						<!-- needs to reach the other user -->
+					
+					
 					<form action="backend/offerTrade.php" method="post"> 
 						<h5> 
 						Book to Offer: 
+							
 							<input type="text" class = "form-control" name="bookToOffer">
 							<br>
 						Message: 
