@@ -90,6 +90,7 @@ function other_populate_table()
 	
 	foreach ($users as $user) 
 	{
+		
 		$table .= '<tr>';
 
 		$table .= '<td>';	
@@ -143,10 +144,8 @@ function get_my_offerbooks(){
 	try{
 		$DBH = new PDO("mysql:host=localhost;dbname=bookswapperph", "root", "");
 		
-		$status = 1;
-		
-		$data = array("id1" => $_SESSION['id'], "status" => $status, "offer" => $_SESSION['offerTradeID']);
-		$STH = $DBH->prepare("SELECT * FROM offertrade JOIN books ON (offertrade.bookID = books.bookID) WHERE ((userTradingFromID = :id1) AND (status = :status) AND (offerTradeID = :offer))");
+		$data = array("id1" => $_SESSION['id'], "offer" => $_SESSION['offerTradeID']);
+		$STH = $DBH->prepare("SELECT * FROM offertrade JOIN books ON (offertrade.bookID = books.bookID) WHERE ((userTradingFromID = :id1) AND (offerTradeID = :offer))");
 		$STH -> execute($data);
 		$myOffers = $STH->fetchALL(PDO::FETCH_OBJ);
 

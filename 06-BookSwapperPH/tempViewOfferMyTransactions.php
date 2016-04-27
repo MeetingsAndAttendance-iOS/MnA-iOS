@@ -159,28 +159,30 @@
 								$books = get_my_offerbooks();
 								foreach($books as $book)
 								{
-									if($book->status == 1)
+									if($book->status == 0)
 									{
 									?>
-				
-										<input type="hidden" class = "no-border-btn btn-block" name="tempID" value="<?php echo $book->bookID; ?>">
-										<input type="button" class = "no-border-btn btn-block btn-info" name="submit" value="<?php echo $book->bookName; ?>">
+										<form action = "tempProfileViewBookAccept.php" method = "post">
+											<input type="submit" class= "no-border-btn btn-block btn-info" name="submit" value = "Offer Declined">
+										</form>
 										
 									
+									<?php
+									}
+									elseif($book->status == 1)
+									{
+									?>
+										<form action = "tempViewOffers.php" method = "post">
+											<input type="submit" class = "no-border-btn btn-block btn-info" name="submit" value="Pending Offer">
+										</form>
 									<?php
 									}
 									elseif($book->status == 2)
 									{
 									?>
-									
-									
-									<?php
-									}
-									elseif($book->status == 0)
-									{
-									?>
-									
-									
+										<form action = "tempProfileViewBookAccept.php" method = "post">
+											<input type="submit" class= "no-border-btn btn-block btn-info" name="submit" value = "Offer Accepted">
+										</form>
 									<?php
 									}
 								}
@@ -189,7 +191,10 @@
 					</div>
 				</div>
 			</div>
-
+		<?php
+			if($book->status == 1)
+			{
+				?>
 			<div style = "float: right; text-align: right; width: 50%">
 				<form action="backend/deleteOffer.php" method="post">
 					<input type="submit" class = "btn btn-warning" value="Delete Offer">
@@ -201,7 +206,9 @@
 					<input type="submit" class = "btn btn-warning" value="Back">
 				</form>
 			</div>
-
+		<?php
+			}
+			?>
 		</div>
 	</div>
 

@@ -201,6 +201,17 @@
               </div>
             </div>
 
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 class="panel-title">Location</h3>
+              </div>
+              <div class="panel-body">
+                <?php
+                    echo $user->location;
+                ?>
+              </div>
+            </div>
+
 
             <div class="row">
               <div class="col-md-4">
