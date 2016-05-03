@@ -11,7 +11,7 @@
 
         $data = array('name' => $name, 'location' => $location, 'contactNo' => $contactNo, 'email' => $email, 'id' => $_SESSION['id']);
 
-        $STH = $DBH->prepare("UPDATE users SET displayName = :name, location = :location, contactNo = :contactNo, email = :email WHERE userID = :id");
+        $STH = $DBH->prepare("UPDATE users SET userName = :name, displayName = :name, location = :location, contactNo = :contactNo, email = :email WHERE userID = :id");
         $STH->execute($data);
 
         $DBH = null;

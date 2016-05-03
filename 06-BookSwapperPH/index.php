@@ -168,7 +168,7 @@
 									<?php
 								}
 							?>
-							<li><a href="tempProfile.php"><?php echo $_SESSION['name']; ?></a></li>
+							<li><a href="tempProfile.php"><?php echo $user->userName ?></a></li>
 							<li><a href="backend/logout.php">Log Out</a></li>
 
 							<!-- Is it okay if I put this here !-->
@@ -239,13 +239,13 @@
                     <h1>Sign Up</h1>
                     <form action="backend/signup.php" method="post">
 
-                    <input type="text" name="username" class="form-control" style="margin: 5px" placeholder="Username" required >
-                    <input type="text" name="email" class="form-control" style="margin: 5px" placeholder="Email Address" required >
-					<input type="password" name="password1" class="form-control" style="margin: 5px" placeholder="Password" required >
-                    <input type="password" name="password2" class="form-control" style="margin: 5px" placeholder="Confirm Password" required >
-					<input type="text" name="location" class="form-control" style="margin: 5px" placeholder="Location/Address" required >
-					<input type="number" size="11" name="contactno" class="form-control" style="margin: 5px" placeholder="Contact Number" required >
-					
+						<input type="text" name="username" class="form-control" style="margin: 5px" placeholder="Username" required >
+						<input type="text" name="email" class="form-control" style="margin: 5px" placeholder="Email Address" required >
+						<input type="password" name="password1" class="form-control" style="margin: 5px" placeholder="Password" required >
+						<input type="password" name="password2" class="form-control" style="margin: 5px" placeholder="Confirm Password" required >
+						<input type="text" name="location" class="form-control" style="margin: 5px" placeholder="Location/Address" required >
+						<input type="number" size="11" name="contactno" class="form-control" style="margin: 5px" placeholder="Contact Number" required >
+						
                     <div class="row">
                         <div class="col-md-3">
                             <a class="btn btn-large btn-primary" href="index.php">Back</a>

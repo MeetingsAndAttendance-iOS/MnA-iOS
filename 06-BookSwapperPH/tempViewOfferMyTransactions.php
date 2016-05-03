@@ -11,6 +11,10 @@
 	{
 		$_SESSION['offerID'] = $_POST['offerID'];
 	}
+	if(isset($_POST['offer_userID']))
+	{
+		$_SESSION['offer_userID'] = $_POST['offer_userID'];
+	}
 ?>
 
 <html>

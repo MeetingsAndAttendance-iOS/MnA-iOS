@@ -96,6 +96,7 @@ function other_populate_table()
 		$table .= '<td>';	
 		$table .= "<form action = 'tempViewOfferMyTransactions.php' method = 'post'>
 						<input type='hidden' name= 'offerTradeID' value=$user->offerTradeID>
+						<input type='hidden' name= 'offer_userID' value=$user->userTradingToID>
 						<input type='submit' class = 'btn btn-link' name='submit' value=$user->offerTradeID>
 						</form> ";
 		$table .= "</td>";

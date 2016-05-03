@@ -8,9 +8,9 @@
 	    $STH = $DBH->prepare("SELECT * FROM users WHERE userID = :id");
 	    $STH->execute($data);
 
-	    $event = $STH->fetchAll(PDO::FETCH_OBJ);
+	    $profile = $STH->fetchAll(PDO::FETCH_OBJ);
 
 	    $DBH = null;
-	    return $event[0];
+	    return $profile[0];
 	}
 ?>

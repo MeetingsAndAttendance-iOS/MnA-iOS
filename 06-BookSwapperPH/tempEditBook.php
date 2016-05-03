@@ -93,7 +93,7 @@
 	<div class="col-md-6 col-md-offset-3"> 
 		<div class="boxview">
 	    <h1>Trade your book now!</h1>
-	    <form action="backend/addBook.php" method="post">
+	    <form action="backend/editBook.php" method="post">
 	            <div class="panel panel-primary">
 	              <div class="panel-heading">
 	                <h3 class="panel-title">Book Name</h3>

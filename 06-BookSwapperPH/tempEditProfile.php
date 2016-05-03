@@ -65,7 +65,7 @@
                       <?php
                     }
                   ?>
-                  <li><a href="tempProfile.php"><?php echo $_SESSION['name']; ?></a></li>
+                  <li><a href="tempProfile.php"><?php echo $user->userName ?></a></li>
                   <li><a href="backend/logout.php">Log Out</a></li>
 
                   <!-- Is it okay if I put this here !-->
@@ -87,10 +87,46 @@
         <form action="backend/editProfile.php" method="post">
                 <div class="panel panel-primary">
                   <div class="panel-heading">
+                    <h3 class="panel-title">UserName</h3>
+                  </div>
+                  <div class="panel-body">
+                    <input type="text" class="form-control" name="userName" value="<?php echo $profile->userName; ?>" required >
+                  </div>
+                </div>
+				
+				<div class="panel panel-primary">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Old Password</h3>
+                  </div>
+                  <div class="panel-body">
+                    <input type="password" class="form-control" name="oldpass" required >
+                  </div>
+                </div>
+				
+				<div class="panel panel-primary">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">New Password</h3>
+                  </div>
+                  <div class="panel-body">
+                    <input type="password" class="form-control" name="newpass1" required >
+                  </div>
+                </div>
+				
+				<div class="panel panel-primary">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Confirm New Password</h3>
+                  </div>
+                  <div class="panel-body">
+                    <input type="password" class="form-control" name="newpass2" required >
+                  </div>
+                </div>
+				
+				<div class="panel panel-primary">
+                  <div class="panel-heading">
                     <h3 class="panel-title">Display Name</h3>
                   </div>
                   <div class="panel-body">
-                    <input type="text" class="form-control" name="displayName" value="<?php echo $profile->displayName; ?>">
+                    <input type="text" class="form-control" name="displayName" value="<?php echo $profile->displayName; ?>" required >
                   </div>
                 </div>
 
@@ -99,7 +135,7 @@
                     <h3 class="panel-title">Location</h3>
                   </div>
                   <div class="panel-body">
-                    <input type="text" class="form-control" name="location" value="<?php echo $profile->location; ?>">
+                    <input type="text" class="form-control" name="location" value="<?php echo $profile->location; ?>" required >
                   </div>
                 </div>
 
@@ -108,7 +144,7 @@
                     <h3 class="panel-title">Contact Number</h3>
                   </div>
                   <div class="panel-body">
-                    <input type="text" class="form-control" name="contactNo" value="<?php echo $profile->contactNo; ?>">
+                    <input type="text" class="form-control" name="contactNo" value="<?php echo $profile->contactNo; ?>" required >
                   </div>
                 </div>
 
@@ -117,7 +153,7 @@
                     <h3 class="panel-title">Email Address</h3>
                   </div>
                   <div class="panel-body">
-                    <input type="text" class="form-control" name="email" value="<?php echo $profile->email; ?>">
+                    <input type="text" class="form-control" name="email" value="<?php echo $profile->email; ?>" required >
                   </div>
                 </div>
         
@@ -128,7 +164,7 @@
         </div>
 
         <div style="float: left; text-align:left; width:50%">
-            <form action="index.php" method="post">
+            <form action="tempProfile.php" method="post">
                 <input type="submit" class="btn btn-warning" value="Back">
             </form>
         </div>

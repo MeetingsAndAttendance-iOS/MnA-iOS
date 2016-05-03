@@ -198,7 +198,7 @@
 				<?php
 					$library = getLibrary();
 					if((empty($library)) && (isset($_SESSION['isLoggedIn']))){
-						
+						if(($user->userID) == ($_SESSION['tempID'])){
 					?>
 						<div class ="col-md-4">
 							<div class = "thumbnail">
@@ -208,7 +208,7 @@
 							</div>
 						</div>							
 					<?php
-						
+						}
 					}
 					$library = getLibrary();
 					$user = getUser();
