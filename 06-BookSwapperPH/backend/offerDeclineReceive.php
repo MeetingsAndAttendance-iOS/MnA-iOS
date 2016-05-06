@@ -3,7 +3,7 @@
 	try{
 		$DBH = new PDO("mysql:host=localhost;dbname=bookswapperph","root","");
 		
-		$status = 3;
+		$status = 0;
 		
 		$data = array('status' => $status, 'offer' => $_SESSION['offerID']);
 		$STH = $DBH->prepare("UPDATE offers SET status = :status WHERE (offerID = :offer)");

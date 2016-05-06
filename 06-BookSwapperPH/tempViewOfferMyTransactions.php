@@ -163,13 +163,12 @@
 								$books = get_my_offerbooks();
 								foreach($books as $book)
 								{
-									if($book->status == 0)
+									if($book->status == 3)
 									{
 									?>
-										<form action = "tempProfileViewBookAccept.php" method = "post">
+										<form action = "backend/offerDeclineReceive.php" method = "post">
 											<input type="submit" class= "no-border-btn btn-block btn-info" name="submit" value = "Offer Declined">
 										</form>
-										
 									
 									<?php
 									}

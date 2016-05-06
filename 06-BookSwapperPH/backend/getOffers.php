@@ -9,31 +9,75 @@ function populate_table()
 	foreach ($users as $user) 
 	{
 		
-		$table .= '<tr>';
+		if($user->status == 1)
+		{
+			$table .= '<tr>';
+			
+			$table .= '<td>';	
+			$table .= "<form action = 'tempViewOfferBookOffers.php' method = 'post'>
+							<input type='hidden' name= 'offerID' value=$user->offerID>
+							<input type='submit' class = 'btn btn-link' name='submit' value=$user->offerID>
+							</form> ";
+			$table .= "</td>";
+			
+			$table .= '<td>';	
+			$table .= $user->offerName;
+			$table .= '</td>';
 
-		$table .= '<td>';	
-		$table .= "<form action = 'tempViewOfferBookOffers.php' method = 'post'>
-						<input type='hidden' name= 'offerID' value=$user->offerID>
-						<input type='hidden' name= 'offer_userID' value=$user->userTradingFromID>
-						<input type='submit' class = 'btn btn-link' name='submit' value=$user->offerID>
-						</form> ";
-		$table .= "</td>";
+			$table .= '<td>';	
+			$table .= $user->message;
+			$table .= '</td>';
 
-		$table .= '<td>';	
-		$table .= $user->offerName;
-		$table .= '</td>';
+			$table .= '<td>';	
+			$table .= $user->userName;
+			$table .= '</td>';
 
-		$table .= '<td>';	
-		$table .= $user->message;
-		$table .= '</td>';
+			$table .= '<td>';	
+			$table .= "Pending Response";
+			$table .= '</td>';
+			
+			$table .= '</td>';
+
+			$table .= '</tr>';			
+
+
+		}
+		elseif($user->status == 2)
+		{
+			$table .= '<tr>';
+			
+			$table .= '<td>';	
+			$table .= "<form action = 'tempProfileViewBookAcceptFrom.php' method = 'post'>
+							<input type='hidden' name= 'userTradingFromID' value=$user->userTradingFromID>
+							<input type='submit' class = 'btn btn-link' name='submit' value=$user->offerID>
+							</form> ";
+			$table .= "</td>";	
+
+			$table .= '<td>';	
+			$table .= $user->offerName;
+			$table .= '</td>';
+
+			$table .= '<td>';	
+			$table .= $user->message;
+			$table .= '</td>';
+
+			$table .= '<td>';	
+			$table .= $user->userName;
+			$table .= '</td>';
+			
+			$table .= '<td>';	
+			$table .= "View User's Profile";
+			$table .= '</td>';
+			
+			$table .= '</td>';
+
+			$table .= '</tr>';			
+		}
+		else{
 		
-		$table .= '<td>';	
-		$table .= $user->userName;
-		$table .= '</td>';
+		}
 		
-		$table .= '</td>';
-
-		$table .= '</tr>';
+		
 		
 	}
 		
@@ -90,33 +134,107 @@ function other_populate_table()
 	
 	foreach ($users as $user) 
 	{
+
+		if($user->status == 0)
+		{
 		
-		$table .= '<tr>';
+		}
+		elseif($user->status == 1)
+		{
+			$table .= '<tr>';
 
-		$table .= '<td>';	
-		$table .= "<form action = 'tempViewOfferMyTransactions.php' method = 'post'>
-						<input type='hidden' name= 'offerTradeID' value=$user->offerTradeID>
-						<input type='hidden' name= 'offer_userID' value=$user->userTradingToID>
-						<input type='submit' class = 'btn btn-link' name='submit' value=$user->offerTradeID>
-						</form> ";
-		$table .= "</td>";
+			$table .= '<td>';	
+			$table .= "<form action = 'tempViewOfferMyTransactions.php' method = 'post'>
+							<input type='hidden' name= 'offerTradeID' value=$user->offerTradeID>
+							<input type='submit' class = 'btn btn-link' name='submit' value=$user->offerTradeID>
+							</form> ";
+			$table .= "</td>";
 
-		$table .= '<td>';	
-		$table .= $user->offerTradeName;
-		$table .= '</td>';
+			$table .= '<td>';	
+			$table .= $user->offerTradeName;
+			$table .= '</td>';
 
-		$table .= '<td>';	
-		$table .= $user->tmessage;
-		$table .= '</td>';
-		
-		$table .= '<td>';	
-		$table .= $user->userName;
-		$table .= '</td>';
-		
+			$table .= '<td>';	
+			$table .= $user->tmessage;
+			$table .= '</td>';
+			
+			$table .= '<td>';	
+			$table .= $user->userName;
+			$table .= '</td>';
+			
+			$table .= '<td>';	
+			$table .= "Pending";
+			$table .= '</td>';
+			
+			$table .= '</td>';
 
-		$table .= '</td>';
+			$table .= '</tr>';
 
-		$table .= '</tr>';
+		}
+		elseif($user->status == 2)
+		{
+			$table .= '<tr>';
+
+			$table .= '<td>';	
+			$table .= "<form action = 'tempProfileViewBookAcceptTo.php' method = 'post'>
+							<input type='hidden' name= 'userTradingToID' value=$user->userTradingToID>
+							<input type='submit' class = 'btn btn-link' name='submit' value=$user->offerTradeID>
+							</form> ";
+			$table .= "</td>";
+
+			$table .= '<td>';	
+			$table .= $user->offerTradeName;
+			$table .= '</td>';
+
+			$table .= '<td>';	
+			$table .= $user->tmessage;
+			$table .= '</td>';
+			
+			$table .= '<td>';	
+			$table .= $user->userName;
+			$table .= '</td>';
+			
+			$table .= '<td>';	
+			$table .= "View User's Profile";
+			$table .= '</td>';
+			
+			$table .= '</td>';
+
+			$table .= '</tr>';
+
+		}
+		elseif($user->status == 3)
+		{
+			$table .= '<tr>';
+
+			$table .= '<td>';	
+			$table .= "<form action = 'tempViewOfferMyTransactions.php' method = 'post'>
+							<input type='hidden' name= 'offerTradeID' value=$user->offerTradeID>
+							<input type='submit' class = 'btn btn-link' name='submit' value=$user->offerTradeID>
+							</form> ";
+			$table .= "</td>";
+
+			$table .= '<td>';	
+			$table .= $user->offerTradeName;
+			$table .= '</td>';
+
+			$table .= '<td>';	
+			$table .= $user->tmessage;
+			$table .= '</td>';
+			
+			$table .= '<td>';	
+			$table .= $user->userName;
+			$table .= '</td>';
+			
+			$table .= '<td>';	
+			$table .= "Declined";
+			$table .= '</td>';
+			
+			$table .= '</td>';
+
+			$table .= '</tr>';
+
+		}
 	}
 	
 	return $table;

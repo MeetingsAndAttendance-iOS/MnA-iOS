@@ -111,8 +111,8 @@
           <th>#</th>
           <th>MyBookOffers</th>
           <th>Message</th>
-		  <th>User</th>		 
-		 <!-- <th>Status</th> -->
+		  <th>User</th>		
+		 <th>Status</th>
 		 <th></th>
           </tr>
       </thead>
@@ -130,7 +130,7 @@
           <th>BookOffered</th>
           <th>Message</th>
           <th>User</th>
-		 <!-- <th>Status</th> -->
+		 <th>Status</th>
           <th></th>
           </tr>
       </thead>

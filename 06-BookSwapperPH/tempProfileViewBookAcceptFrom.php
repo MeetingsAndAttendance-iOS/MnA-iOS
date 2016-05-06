@@ -8,6 +8,14 @@
         unset($_SESSION['contactNo']);
         unset($_SESSION['email']);
     }
+	if(isset($_POST['userTradingFromID']))
+	{
+		$_SESSION['userTradingFromID'] = $_POST['userTradingFromID'];
+	}
+	if(isset($_POST['userTradingToID']))
+	{
+		$_SESSION['userTradingToID'] = $_POST['userTradingToID'];
+	}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -179,7 +187,7 @@
     </nav>
 
   <?php
-      $user = getUser($_SESSION['id']);
+      $user = getUser($_SESSION['userTradingFromID']);
   ?>
 
 <div class="container text-center">
@@ -234,7 +242,7 @@
 
             <div class="row">
               <div class="col-md-4">
-                <a class="btn btn-large btn-primary" href="index.php">Back</a>
+                <a class="btn btn-large btn-primary" href="tempViewOffers.php">Back</a>
               </div>
                 <?php
                   {
