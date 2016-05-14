@@ -1,0 +1,50 @@
+body {
+	padding-top: 80px;
+	min-width: 500px;
+	width: auto !important;
+	width:500px;
+}
+
+.full {
+	background-image: url(../img/header.jpg);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+header {
+	background: rgba(255,255,255,0);
+    width: 100%;
+    text-align: center;
+    color: #fff;
+}
+
+header .header-content {
+    position: absolute;
+    width: 100%;
+    padding: 100px 15px;
+    text-align: center;
+}
+
+.boxview {
+	color:#595959; 
+	background-color: #f2f2f2; 
+	padding: 10px; 
+	padding-bottom: 45px;
+}
+
+h1 {
+	color: #f05f40;
+}
+
+.table-responsive
+{
+	background-color: #f2f2f2;
+}
+
+th, td
+{
+	text-align: center;
+}
+
